@@ -1,343 +1,828 @@
-<svg width="1200" height="720" viewBox="0 0 1200 720"
-     xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200"
+     height="720"
+     viewBox="0 0 1200 720">
+
+  <!-- =========================================================
+       DEFINITIONS
+  ========================================================== -->
+  <defs>
+
+    <!-- Animated ASCII gradient -->
+    <linearGradient id="asciiGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%">
+
+      <stop offset="0%" stop-color="#00F2FE">
+        <animate
+          attributeName="stop-color"
+          values="#00F2FE;#7C3AED;#38BDF8;#00F2FE"
+          dur="9s"
+          repeatCount="indefinite"/>
+      </stop>
+
+      <stop offset="100%" stop-color="#7C3AED">
+        <animate
+          attributeName="stop-color"
+          values="#7C3AED;#38BDF8;#00F2FE;#7C3AED"
+          dur="9s"
+          repeatCount="indefinite"/>
+      </stop>
+
+    </linearGradient>
+
+
+    <!-- Border gradient -->
+    <linearGradient id="borderGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%">
+
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#10B981"/>
+
+    </linearGradient>
+
+
+    <!-- Background glow -->
+    <radialGradient id="bgGlow"
+                    cx="30%"
+                    cy="20%"
+                    r="80%">
+
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="100%" stop-color="#050816"/>
+
+    </radialGradient>
+
+
+    <!-- Animated scanline gradient -->
+    <linearGradient id="scanGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%">
+
+      <stop offset="0%"
+            stop-color="#00E5FF"
+            stop-opacity="0"/>
+
+      <stop offset="45%"
+            stop-color="#00E5FF"
+            stop-opacity="0.04"/>
+
+      <stop offset="50%"
+            stop-color="#B6F7FF"
+            stop-opacity="0.65"/>
+
+      <stop offset="55%"
+            stop-color="#00E5FF"
+            stop-opacity="0.04"/>
+
+      <stop offset="100%"
+            stop-color="#7C3AED"
+            stop-opacity="0"/>
+
+    </linearGradient>
+
+
+    <!-- CRT scanlines -->
+    <pattern id="scanlines"
+             width="4"
+             height="4"
+             patternUnits="userSpaceOnUse">
+
+      <rect width="4"
+            height="1"
+            fill="#7DD3FC"
+            opacity="0.04"/>
+
+    </pattern>
+
+
+    <!-- Cyan glow -->
+    <filter id="softGlow"
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="200%">
+
+      <feGaussianBlur
+        stdDeviation="3"
+        result="blur"/>
+
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+
+    </filter>
+
+
+    <!-- Font styles -->
+    <style>
+
+      .ascii {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 5.2px;
+        fill: url(#asciiGrad);
+        letter-spacing: -0.05px;
+      }
+
+      .key {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 13px;
+        fill: #00E5FF;
+        font-weight: bold;
+      }
+
+      .value {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 13px;
+        fill: #E6EDF3;
+      }
+
+      .dots {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 13px;
+        fill: #475569;
+      }
+
+      .head {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 17px;
+        fill: #00E5FF;
+        font-weight: bold;
+      }
+
+      .accent {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 13px;
+        fill: #10B981;
+        font-weight: bold;
+      }
+
+      .term-label {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 12px;
+        fill: #64748B;
+        letter-spacing: 0.5px;
+      }
+
+      .panel-title {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 11px;
+        fill: #38BDF8;
+        letter-spacing: 2px;
+        opacity: 0.8;
+      }
+
+      .cursor-blink {
+        fill: #00E5FF;
+      }
+
+    </style>
+
+  </defs>
+
 
   <!-- =========================================================
        BACKGROUND
   ========================================================== -->
-  <rect width="1200" height="720" rx="14" fill="#0B0F19"/>
 
-  <!-- Outer terminal frame -->
-  <rect x="1" y="1" width="1198" height="718" rx="14"
-        fill="none" stroke="#00E5FF" stroke-opacity="0.35"/>
+  <rect width="1200"
+        height="720"
+        rx="18"
+        fill="url(#bgGlow)"/>
+
+  <rect width="1200"
+        height="720"
+        rx="18"
+        fill="url(#scanlines)"/>
+
 
   <!-- =========================================================
-       TOP TERMINAL BAR
+       TERMINAL TITLE BAR
   ========================================================== -->
-  <rect x="1" y="1" width="1198" height="58" rx="14" fill="#0D1117"/>
 
-  <!-- Flatten bottom corners of top bar -->
-  <rect x="1" y="30" width="1198" height="29" fill="#0D1117"/>
+  <g id="titlebar">
 
-  <!-- macOS controls -->
-  <circle cx="28" cy="29" r="7" fill="#FF5F56"/>
-  <circle cx="51" cy="29" r="7" fill="#FFBD2E"/>
-  <circle cx="74" cy="29" r="7" fill="#27C93F"/>
+    <rect x="3"
+          y="3"
+          width="1194"
+          height="54"
+          rx="16"
+          fill="#0B1120"
+          fill-opacity="0.90"/>
 
-     <defs>
-  <linearGradient id="scanlineGradient" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#00F2FE" stop-opacity="0"/>
-    <stop offset="50%" stop-color="#00F2FE" stop-opacity="0.18"/>
-    <stop offset="100%" stop-color="#00F2FE" stop-opacity="0"/>
-  </linearGradient>
 
-  <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur stdDeviation="3" result="blur"/>
-    <feMerge>
-      <feMergeNode in="blur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
-  </filter>
-</defs>
+    <!-- macOS dots -->
 
-     <rect x="3" y="80"
-      width="1194"
-      height="3"
-      fill="url(#scanlineGradient)"
-      opacity="0.8"/>
-     
-  <!-- Terminal title -->
-  <text x="600" y="35"
-        text-anchor="middle"
-        fill="#8B949E"
-        font-family="monospace, Courier New, Consolas"
-        font-size="15">
-    harvsclein@devos ~ % ./profile.sh --live
-  </text>
+    <circle cx="28"
+            cy="29"
+            r="6"
+            fill="#EF4444">
 
-  <!-- Status -->
-  <text x="1168" y="35"
-        text-anchor="end"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="13"
-        font-weight="bold">
-    [ONLINE]
-  </text>
+      <animate
+        attributeName="opacity"
+        values="1;0.55;1"
+        dur="4s"
+        repeatCount="indefinite"/>
+
+    </circle>
+
+
+    <circle cx="51"
+            cy="29"
+            r="6"
+            fill="#F59E0B">
+
+      <animate
+        attributeName="opacity"
+        values="1;0.55;1"
+        dur="4s"
+        begin="0.3s"
+        repeatCount="indefinite"/>
+
+    </circle>
+
+
+    <circle cx="74"
+            cy="29"
+            r="6"
+            fill="#10B981">
+
+      <animate
+        attributeName="opacity"
+        values="1;0.55;1"
+        dur="4s"
+        begin="0.6s"
+        repeatCount="indefinite"/>
+
+    </circle>
+
+
+    <!-- Terminal prompt -->
+
+    <text x="600"
+          y="35"
+          text-anchor="middle"
+          class="term-label">
+
+      harvsclein@devos ~ % ./profile.sh --live
+
+    </text>
+
+
+    <!-- Online indicator -->
+
+    <circle cx="1088"
+            cy="29"
+            r="4"
+            fill="#00E5FF"
+            filter="url(#softGlow)">
+
+      <animate
+        attributeName="opacity"
+        values="1;0.2;1"
+        dur="1.4s"
+        repeatCount="indefinite"/>
+
+    </circle>
+
+
+    <text x="1100"
+          y="34"
+          fill="#00E5FF"
+          font-family="monospace, Courier New, Consolas"
+          font-size="12"
+          font-weight="bold">
+
+      [ONLINE]
+
+    </text>
+
+  </g>
+
 
   <!-- =========================================================
-       MAIN CONTENT AREA
+       MAIN LAYOUT
   ========================================================== -->
 
   <!-- Vertical divider -->
-  <line x1="430" y1="82" x2="430" y2="680"
+
+  <line x1="430"
+        y1="78"
+        x2="430"
+        y2="690"
         stroke="#00E5FF"
-        stroke-opacity="0.25"/>
+        stroke-opacity="0.20"/>
+
 
   <!-- =========================================================
        LEFT PANEL
   ========================================================== -->
 
-  <!-- Section label -->
-  <text x="38" y="100"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="15"
-        font-weight="bold">
+  <rect x="20"
+        y="78"
+        width="390"
+        height="612"
+        rx="14"
+        fill="#0B1120"
+        fill-opacity="0.28"
+        stroke="url(#borderGrad)"
+        stroke-width="1"
+        opacity="0.45"/>
+
+
+  <text x="38"
+        y="100"
+        class="panel-title">
+
     VISUAL.MAP
+
   </text>
 
-  <!-- Left panel horizontal line -->
-  <line x1="38" y1="115" x2="395" y2="115"
+
+  <line x1="38"
+        y1="114"
+        x2="392"
+        y2="114"
         stroke="#00E5FF"
-        stroke-opacity="0.35"/>
+        stroke-opacity="0.25"/>
 
-  <!-- ASCII / Logo -->
-  <text x="38" y="140"
-      fill="#00F2FE"
-      font-family="monospace, Courier New, Consolas"
-      font-size="6.5"
-      xml:space="preserve">
 
-  <tspan x="38" dy="0">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@%@</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@%%%</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@%%</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*++++**###%#######%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@%%</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@%%#**+++==-------::::::::=+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%@@@%%%%%</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#####**+=-::::::::::::.::::-++*##%%%%%%%%%%%%%####%%%%%%%%%%%%@@@@%%</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::-=+*##%%%#*=-----=+#%%%%%%%%%%%%%#+</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::.::::::-=-::::::-++--+#%%%%%%%%%+===</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%%%%@@@@@@@@@@%%########+-::::::::::::::::::::::::::......:::::::::-=**+=--*%%%%%%*=====</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%%@@@@@@@@@@@%%%######*+=-:::::::::::::::::::::::::::........::::::--=*##+=--#%%%%*=----+</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@@@@@%%%######*=-::::::-*%@@@#+:::::::::::::::.......::::::---=+#%#+--+#%%%+---:=-</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@%@%%%%######+-:::::#@*::.:....-%@*:::::::::::.......:::::----==#%#=-----+*#*+----</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%##%%%@@@@@@%%%%%###*+=::::-%#::::::::::::::=%*::::::::::....:::::::-----=*#*=-+=----=+**+=-</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%##%%%%%%%%%%%%%##**+=-:::*#-:::::::::::::::::+%=::::::::...::::::-=++++===**-=++=----+*****</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%###%%%%%%%%%%%###***=*@@%*-::::::--==++++=----=@=::::::::::::-+###*+++*##%%*=-+++=--=******</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%###%%%%%%##%%%%##**+-%@@%-:::::--=*%%++%%%*=---+%-:--:::.::-##=-------=====*%*=+**+=+*##***</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%#############%###**==@@@*::::::--=#%%%%%%%#+----%+---:::.:*#-::------========*@****+****#**</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%###++**#######**=-=%@@+::::::---*%%%%%%%#+----#*---::.:#+::---------=======+=%#*++***+===</tspan>
-  <tspan x="38" dy="7">%%%%%%%%%%%#+==+****####**+-::::**::::::---=+#%%###*=---:%@@@@%-:**----==++++*++======+==%+-+*======</tspan>
-  <tspan x="38" dy="7">%%%%###*+=====+******#***+-:::::=%-::::::--------------:=%:::::-#%=--==+##%%%%%%#*+++=+==*#+========</tspan>
-  <tspan x="38" dy="7">#**++=====---=+*********+=-:::::-**-::::-------------::=@-::::::=#=-=+*#%%%%%%@@@%#*+++--+@@%+======</tspan>
-  <tspan x="38" dy="7">+++=====-----=+****+***+=-:::::::-*#-::----------:::::+%-:::::::=#==+*#%@%%##%@@%%#*+*#++*@@@+======</tspan>
-  <tspan x="38" dy="7">++=====------=++**+++++=-:::::::::-=%*-:::::::::::::=#*:::::::::-#*+*#%%%%%%%%%%%%#***#*+#@@%=====--</tspan>
-  <tspan x="38" dy="7">++====-------==++++++==--::::::::::::-*#+-:::::::=#%+-::::::::::-+#+*#%######%%%%#***#+=+@@@#===----</tspan>
-  <tspan x="38" dy="7">======--------=+++++==------------::...:-=+*###*+-::::::::::------*%*####**###%%#***#*=+@+=====-----</tspan>
-  <tspan x="38" dy="7">---------------=++====--------=---::::::::::::::::::::::::::-----==+@%##########****+=%#====--------</tspan>
-  <tspan x="38" dy="7">-----------::::--==---------------:::::::::::::::::::::::::-----====*%@%##*****++*+*%#======--------</tspan>
-  <tspan x="38" dy="7">-----------:::::------------------::::----::::::::::--:::--=----===+*####%@%%#%%%%#+=======---------</tspan>
-  <tspan x="38" dy="7">-:::::----:::::::::::--------------:::----:::::::::---=====+=---==++*##*++++++=============--------=</tspan>
-  <tspan x="38" dy="7">::::::::--:::::::::::::-----------:::::::::::::::---=+***++=----====+##*+++++===============------==</tspan>
-  <tspan x="38" dy="7">:::::::::--:::::::::::::----------::--::::::--::--=+#%%%##**#+=======**++++==================---====</tspan>
-  <tspan x="38" dy="7">::::::::::--::::::::::::------------==-:::-------=+##+=+%%%%%%%#++++++*+++=============++===========</tspan>
-  <tspan x="38" dy="7">:::::::::::--::::::::::::::--------===-::--------=*#+=+=+++#%@@%%%%*++++================++==========</tspan>
-  <tspan x="38" dy="7">:::::::::::-----:::-----------------==----------=+*%%@@@@%##@@@@%%%*====================+*+=========</tspan>
-  <tspan x="38" dy="7">::::::::::::-----------------------===--------===++*%@@@@##%@@@%#*======================+*+=========</tspan>
-  <tspan x="38" dy="7">:::::::::::::---------------------=====*@@%+====++++*%@@@@%@@@@@%*+======================**++=======</tspan>
-  <tspan x="38" dy="7">::::::::::::-----:::----------=======+%@@@@@@*+++*****#%@@@@@@@%#*+++++++++==============+**+=======</tspan>
-  <tspan x="38" dy="7">::::::::::::----::::-----------=++===@@@@@@@@@%******#####%%%%%%##*=+**+++++++++++=======++**+======</tspan>
-  <tspan x="38" dy="7">:::::::---------:::--------------==+%@@@@@@@@@@@#**##%%%%###%%%%##*=+**=+**++++*****++++==+***++====</tspan>
-  <tspan x="38" dy="7">-----------------::----------------*@@@@@@@@@@@@@#****############*==+-----++++********+*++****++===</tspan>
-  <tspan x="38" dy="7">-----------------:::--------------=%@@@@@@@@@@@@@@%%@%%%%%%%%%####*----------=+*********++++****++==</tspan>
-  <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@*----==*############**++*##*++=</tspan>
-  <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*++***############**###*###**++</tspan>
-  <tspan x="38" dy="7">------------------::---------------+*##########%%@@@@@@@@@@@@@@@@@@@@+=--==+**###**+++*+++***#####*+</tspan>
-  <tspan x="38" dy="7">--------------------------------------------==+**##%%%@@@@@@@@@@@@@@#---------==++=====----==++**###</tspan>
-  <tspan x="38" dy="7">-------------------------------------------===+*####%%%@@@@@@@@@@@@%--------------------------==+***</tspan>
-  <tspan x="38" dy="7">------------------------------------------===++*##%%%%%%%@@@@@@@@@@=--::::---------------------==+**</tspan>
-  <tspan x="38" dy="7">-----------------------------------------=======+##%%%+=-=#@@@@@@%=::::::::------:::-------------==+</tspan>
-  <tspan x="38" dy="7">---------------------------------------===------==**===----=#@@@#-::::::::::---:::-----------------=</tspan>
-  <tspan x="38" dy="7">---------------------------------------::::::----=--===-------==--:::::::-:::---:::-----------------</tspan>
-  <tspan x="38" dy="7">------------------------------====--::::::::::----====-------------::-----:::----::-----------------</tspan>
+  <!-- =========================================================
+       ASCII PORTRAIT
+  ========================================================== -->
 
-</text>
+  <text x="38"
+        y="140"
+        class="ascii"
+        xml:space="preserve">
 
-  <!-- Progress bar -->
-  <text x="38" y="555"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="12">
-    SYSTEM.PROGRESS
+    <tspan x="38" dy="0">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@%@</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@%%%</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@%%</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*++++**###%#######%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@%%</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@%%#**+++==-------::::::::=+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%@@@%%%%%</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#####**+=-::::::::::::.::::-++*##%%%%%%%%%%%%%####%%%%%%%%%%%%@@@@%%</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::-=+*##%%%#*=-----=+#%%%%%%%%%%%%%#+</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::.::::::-=-::::::-++--+#%%%%%%%%%+===</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%@@@@@@@@@@%%########+-::::::::::::::::::::::::::......:::::::::-=**+=--*%%%%%%*=====</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%%@@@@@@@@@@@%%%######*+=-:::::::::::::::::::::::::::........::::::--=*##+=--#%%%%*=----+</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@@@@@%%%######*=-::::::-*%@@@#+:::::::::::::::.......::::::---=+#%#+--+#%%%+---:=-</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@%@%%%%######+-:::::#@*::.:....-%@*:::::::::::.......:::::----==#%#=-----+*#*+----</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%##%%%@@@@@@%%%%%###*+=::::-%#::::::::::::::=%*::::::::::....:::::::-----=*#*=-+=----=+**+=-</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%##%%%%%%%%%%%%%##**+=-:::*#-:::::::::::::::::+%=::::::::...::::::-=++++===**-=++=----+*****</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%###%%%%%%%%%%%###***=*@@%*-::::::--==++++=----=@=::::::::::::-+###*+++*##%%*=-+++=--=******</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%###%%%%%%##%%%%##**+-%@@%-:::::--=*%%++%%%*=---+%-:--:::.::-##=-------=====*%*=+**+=+*##***</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%#############%###**==@@@*::::::--=#%%%%%%%#+----%+---:::.:*#-::------========*@****+****#**</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%###++**#######**=-=%@@+::::::---*%%%%%%%#+----#*---::.:#+::---------=======+=%#*++***+===</tspan>
+    <tspan x="38" dy="7">%%%%%%%%%%%#+==+****####**+-::::**::::::---=+#%%###*=---:%@@@@%-:**----==++++*++======+==%+-+*======</tspan>
+    <tspan x="38" dy="7">%%%%###*+=====+******#***+-:::::=%-::::::--------------:=%:::::-#%=--==+##%%%%%%#*+++=+==*#+========</tspan>
+    <tspan x="38" dy="7">#**++=====---=+*********+=-:::::-**-::::-------------::=@-::::::=#=-=+*#%%%%%%@@@%#*+++--+@@%+======</tspan>
+    <tspan x="38" dy="7">+++=====-----=+****+***+=-:::::::-*#-::----------:::::+%-:::::::=#==+*#%@%%##%@@%%#*+*#++*@@@+======</tspan>
+    <tspan x="38" dy="7">++=====------=++**+++++=-:::::::::-=%*-:::::::::::::=#*:::::::::-#*+*#%%%%%%%%%%%%#***#*+#@@%=====--</tspan>
+    <tspan x="38" dy="7">++====-------==++++++==--::::::::::::-*#+-:::::::=#%+-::::::::::-+#+*#%######%%%%#***#+=+@@@#===----</tspan>
+    <tspan x="38" dy="7">======--------=+++++==------------::...:-=+*###*+-::::::::::------*%*####**###%%#***#*=+@+=====-----</tspan>
+    <tspan x="38" dy="7">---------------=++====--------=---::::::::::::::::::::::::::-----==+@%##########****+=%#====--------</tspan>
+    <tspan x="38" dy="7">-----------::::--==---------------:::::::::::::::::::::::::-----====*%@%##*****++*+*%#======--------</tspan>
+    <tspan x="38" dy="7">-----------:::::------------------::::----::::::::::--:::--=----===+*####%@%%#%%%%#+=======---------</tspan>
+    <tspan x="38" dy="7">-:::::----:::::::::::--------------:::----:::::::::---=====+=---==++*##*++++++=============--------=</tspan>
+    <tspan x="38" dy="7">::::::::--:::::::::::::-----------:::::::::::::::---=+***++=----====+##*+++++===============------==</tspan>
+    <tspan x="38" dy="7">:::::::::--:::::::::::::----------::--::::::--::--=+#%%%##**#+=======**++++==================---====</tspan>
+    <tspan x="38" dy="7">::::::::::--::::::::::::------------==-:::-------=+##+=+%%%%%%%#++++++*+++=============++===========</tspan>
+    <tspan x="38" dy="7">:::::::::::--::::::::::::::--------===-::--------=*#+=+=+++#%@@%%%%*++++================++==========</tspan>
+    <tspan x="38" dy="7">:::::::::::-----:::-----------------==----------=+*%%@@@@%##@@@@%%%*====================+*+=========</tspan>
+    <tspan x="38" dy="7">::::::::::::-----------------------===--------===++*%@@@@##%@@@%#*======================+*+=========</tspan>
+    <tspan x="38" dy="7">:::::::::::::---------------------=====*@@%+====++++*%@@@@%@@@@@%*+======================**++=======</tspan>
+    <tspan x="38" dy="7">::::::::::::-----:::----------=======+%@@@@@@*+++*****#%@@@@@@@%#*+++++++++==============+**+=======</tspan>
+    <tspan x="38" dy="7">::::::::::::----::::-----------=++===@@@@@@@@@%******#####%%%%%%##*=+**+++++++++++=======++**+======</tspan>
+    <tspan x="38" dy="7">:::::::---------:::--------------==+%@@@@@@@@@@@#**##%%%%###%%%%##*=+**=+**++++*****++++==+***++====</tspan>
+    <tspan x="38" dy="7">-----------------::----------------*@@@@@@@@@@@@@#****############*==+-----++++********+*++****++===</tspan>
+    <tspan x="38" dy="7">-----------------:::--------------=%@@@@@@@@@@@@@@%%@%%%%%%%%%####*----------=+*********++++****++==</tspan>
+    <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@*----==*############**++*##*++=</tspan>
+    <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*++***############**###*###**++</tspan>
+    <tspan x="38" dy="7">------------------::---------------+*##########%%@@@@@@@@@@@@@@@@@@@@+=--==+**###**+++*+++***#####*+</tspan>
+    <tspan x="38" dy="7">--------------------------------------------==+**##%%%@@@@@@@@@@@@@@#---------==++=====----==++**###</tspan>
+    <tspan x="38" dy="7">-------------------------------------------===+*####%%%@@@@@@@@@@@@%--------------------------==+***</tspan>
+    <tspan x="38" dy="7">------------------------------------------===++*##%%%%%%%@@@@@@@@@@=--::::---------------------==+**</tspan>
+    <tspan x="38" dy="7">-----------------------------------------=======+##%%%+=-=#@@@@@@%=::::::::------:::-------------==+</tspan>
+    <tspan x="38" dy="7">---------------------------------------===------==**===----=#@@@#-::::::::::---:::-----------------=</tspan>
+    <tspan x="38" dy="7">---------------------------------------::::::----=--===-------==--:::::::-:::---:::-----------------</tspan>
+    <tspan x="38" dy="7">------------------------------====--::::::::::----====-------------::-----:::----::-----------------</tspan>
+
   </text>
 
-  <rect x="38" y="570"
-        width="350"
-        height="12"
+
+  <!-- =========================================================
+       LEFT SYSTEM INFO
+  ========================================================== -->
+
+  <text x="38"
+        y="515"
+        font-family="monospace, Courier New, Consolas"
+        font-size="9"
+        fill="#64748B">
+
+    <tspan x="38" dy="0" fill="#00E5FF">┌─ SYSTEM</tspan>
+    <tspan x="38" dy="14">│</tspan>
+    <tspan x="38" dy="14">├─ MODE     : STUDENT</tspan>
+    <tspan x="38" dy="14">├─ DOMAIN   : DATA / SOFTWARE</tspan>
+    <tspan x="38" dy="14">├─ SIGNAL   : ACTIVE</tspan>
+    <tspan x="38" dy="14">└─ STATUS   : BUILDING</tspan>
+
+  </text>
+
+
+  <!-- Progress -->
+
+  <text x="38"
+        y="604"
+        fill="#00E5FF"
+        font-family="monospace, Courier New, Consolas"
+        font-size="9"
+        font-weight="bold">
+
+    SYSTEM.PROGRESS
+
+  </text>
+
+
+  <rect x="38"
+        y="616"
+        width="340"
+        height="9"
         rx="3"
         fill="#161B22"
         stroke="#00E5FF"
         stroke-opacity="0.25"/>
 
-  <rect x="40" y="572"
-        width="255"
-        height="8"
-        rx="2"
-        fill="#00E5FF"/>
 
-  <text x="38" y="610"
+  <rect x="40"
+        y="618"
+        width="250"
+        height="5"
+        rx="2"
+        fill="#00E5FF"
+        opacity="0.9">
+
+    <animate
+      attributeName="opacity"
+      values="0.65;1;0.65"
+      dur="3s"
+      repeatCount="indefinite"/>
+
+  </rect>
+
+
+  <text x="38"
+        y="645"
         fill="#8B949E"
         font-family="monospace, Courier New, Consolas"
-        font-size="11">
+        font-size="8">
+
     LEARNING • BUILDING • SHIPPING
+
   </text>
+
 
   <!-- =========================================================
        RIGHT PANEL
   ========================================================== -->
 
-  <!-- Username -->
-  <text x="462" y="100"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="18"
-        font-weight="bold">
+  <rect x="450"
+        y="78"
+        width="730"
+        height="612"
+        rx="14"
+        fill="#0B1120"
+        fill-opacity="0.28"
+        stroke="url(#borderGrad)"
+        stroke-width="1"
+        opacity="0.45"/>
+
+
+  <text x="470"
+        y="100"
+        class="panel-title">
+
+    SYSTEM.INFO
+
+  </text>
+
+
+  <line x1="470"
+        y1="114"
+        x2="1155"
+        y2="114"
+        stroke="#00E5FF"
+        stroke-opacity="0.25"/>
+
+
+  <!-- =========================================================
+       IDENTITY
+  ========================================================== -->
+
+  <text x="470"
+        y="145"
+        class="head">
+
     harvsclein@devos
-  </text>
-
-  <!-- Divider -->
-  <text x="462" y="123"
-        fill="#30363D"
-        font-family="monospace, Courier New, Consolas"
-        font-size="12">
-    ───────────────────────────────────────────────────────────
-  </text>
-
-  <!-- Basic Information -->
-  <text x="462" y="157"
-        fill="#E6EDF3"
-        font-family="monospace, Courier New, Consolas"
-        font-size="13">
-
-    <tspan x="462" dy="0">
-      Subject    . . . . . . . . . . . . . Harvey Alvaran
-    </tspan>
-
-    <tspan x="462" dy="27">
-      Role       . . . . . . . . . . . . . BSIT Student
-    </tspan>
-
-    <tspan x="462" dy="27">
-      Origin     . . . . . . . . . . . . . Bulacan, Philippines
-    </tspan>
-
-    <tspan x="462" dy="27">
-      Education  . . . . . . . . . . . . . BS Information Technology
-    </tspan>
-
-    <tspan x="462" dy="27">
-      Status     . . . . . . . . . . . . . Building • Learning • Shipping
-    </tspan>
-
-    <tspan x="462" dy="27">
-      ToolChain  . . . . . . . . . . . . . Python • SQL • Power BI • Git
-    </tspan>
 
   </text>
+
+
+  <text x="470"
+        y="165"
+        class="dots">
+
+    ─────────────────────────────────────────────────────────────
+
+  </text>
+
+
+  <text x="470"
+        y="195">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Subject</tspan>
+    <tspan class="dots">: .......................... </tspan>
+    <tspan class="value">Harvey Alvaran</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="222">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Role</tspan>
+    <tspan class="dots">: ............................. </tspan>
+    <tspan class="value">BSIT Student</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="249">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Origin</tspan>
+    <tspan class="dots">: ........................... </tspan>
+    <tspan class="value">Bulacan, Philippines</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="276">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Education</tspan>
+    <tspan class="dots">: ......................... </tspan>
+    <tspan class="value">BS Information Technology</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="303">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Status</tspan>
+    <tspan class="dots">: ..................... </tspan>
+    <tspan class="value">Building • Learning • Shipping</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="330">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">ToolChain</tspan>
+    <tspan class="dots">: ................. </tspan>
+    <tspan class="value">Python • SQL • Power BI • Git</tspan>
+
+  </text>
+
 
   <!-- =========================================================
        TECH STACK
   ========================================================== -->
 
-  <text x="462" y="350"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="14"
-        font-weight="bold">
+  <text x="470"
+        y="370"
+        class="accent">
+
     - Tech Stack
-  </text>
-
-  <text x="462" y="380"
-        fill="#E6EDF3"
-        font-family="monospace, Courier New, Consolas"
-        font-size="12.5">
-
-    <tspan x="462" dy="0">
-      Core.Lang      . . . Python • Java • C • C++
-    </tspan>
-
-    <tspan x="462" dy="25">
-      Core.Frontend  . . . HTML • CSS • JavaScript
-    </tspan>
-
-    <tspan x="462" dy="25">
-      Core.Backend   . . . REST APIs • Node.js
-    </tspan>
-
-    <tspan x="462" dy="25">
-      Core.Database  . . . MySQL
-    </tspan>
-
-    <tspan x="462" dy="25">
-      Core.Infra     . . . Git • GitHub • Linux
-    </tspan>
 
   </text>
+
+
+  <text x="470"
+        y="400">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Core.Lang</tspan>
+    <tspan class="dots">: ............... </tspan>
+    <tspan class="value">Python • Java • C • C++</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="425">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Core.Frontend</tspan>
+    <tspan class="dots">: ......... </tspan>
+    <tspan class="value">HTML • CSS • JavaScript</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="450">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Core.Backend</tspan>
+    <tspan class="dots">: ........... </tspan>
+    <tspan class="value">REST APIs</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="475">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Core.Database</tspan>
+    <tspan class="dots">: .......... </tspan>
+    <tspan class="value">MySQL</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="500">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Core.Infra</tspan>
+    <tspan class="dots">: ............. </tspan>
+    <tspan class="value">Git • GitHub • Linux</tspan>
+
+  </text>
+
 
   <!-- =========================================================
        CONTACT
   ========================================================== -->
 
-  <text x="462" y="525"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="14"
-        font-weight="bold">
+  <text x="470"
+        y="540"
+        class="accent">
+
     - Contact
-  </text>
-
-  <text x="462" y="553"
-        fill="#E6EDF3"
-        font-family="monospace, Courier New, Consolas"
-        font-size="12.5">
-
-    <tspan x="462" dy="0">
-      Grid.Mail       . . . your.email@example.com
-    </tspan>
-
-    <tspan x="462" dy="24">
-      Grid.Portfolio  . . . your-portfolio.vercel.app
-    </tspan>
-
-    <tspan x="462" dy="24">
-      Grid.LinkedIn   . . . your-linkedin-username
-    </tspan>
-
-    <tspan x="462" dy="24">
-      Grid.Github     . . . github.com/harvsclein
-    </tspan>
 
   </text>
+
+
+  <text x="470"
+        y="567">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Grid.Mail</tspan>
+    <tspan class="dots">: ...................... </tspan>
+    <tspan class="value">your.email@example.com</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="592">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Grid.Portfolio</tspan>
+    <tspan class="dots">: ................ </tspan>
+    <tspan class="value">your-portfolio.vercel.app</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="617">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Grid.LinkedIn</tspan>
+    <tspan class="dots">: .................. </tspan>
+    <tspan class="value">your-linkedin-username</tspan>
+
+  </text>
+
+
+  <text x="470"
+        y="642">
+
+    <tspan class="dots">. </tspan>
+    <tspan class="key">Grid.Github</tspan>
+    <tspan class="dots">: ................... </tspan>
+    <tspan class="value">github.com/harvsclein</tspan>
+
+  </text>
+
 
   <!-- =========================================================
        LIVE STATS
   ========================================================== -->
 
-  <text x="462" y="665"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
-        font-size="13"
-        font-weight="bold">
+  <text x="470"
+        y="671"
+        class="accent">
+
     - Live Stats
+
   </text>
 
-  <text x="625" y="665"
-        fill="#8B949E"
-        font-family="monospace, Courier New, Consolas"
-        font-size="11.5">
-    See live GitHub stats badges below ↓
-  </text>
 
-  <!-- Bottom terminal cursor -->
-  <text x="38" y="690"
-        fill="#00F2FE"
-        font-family="monospace, Courier New, Consolas"
+  <text x="600"
+        y="671"
+        class="value"
         font-size="11">
-    $
+
+    See live GitHub stats badges below ↓
+
   </text>
 
-  <rect x="50" y="680"
-        width="7"
-        height="12"
-        fill="#00E5FF"/>
+
+  <!-- Blinking cursor -->
+
+  <rect x="1138"
+        y="656"
+        width="8"
+        height="14"
+        class="cursor-blink"
+        opacity="0">
+
+    <animate
+      attributeName="opacity"
+      values="0;0;1;0;1;0;1;0"
+      keyTimes="0;0.01;0.02;0.3;0.5;0.7;0.85;1"
+      dur="1.4s"
+      repeatCount="indefinite"/>
+
+  </rect>
+
+
+  <!-- =========================================================
+       MOVING SCANLINE
+  ========================================================== -->
+
+  <rect x="0"
+        y="-100"
+        width="1200"
+        height="100"
+        fill="url(#scanGrad)"
+        opacity="0.7"
+        style="mix-blend-mode:screen">
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      from="0 -100"
+      to="0 820"
+      dur="6.5s"
+      repeatCount="indefinite"/>
+
+  </rect>
+
+
+  <!-- =========================================================
+       OUTER BORDER
+  ========================================================== -->
+
+  <rect x="3"
+        y="3"
+        width="1194"
+        height="714"
+        rx="16"
+        fill="none"
+        stroke="url(#borderGrad)"
+        stroke-width="2"
+        opacity="0.8">
+
+    <animate
+      attributeName="opacity"
+      values="0.45;0.9;0.45"
+      dur="3.2s"
+      repeatCount="indefinite"/>
+
+  </rect>
 
 </svg>
