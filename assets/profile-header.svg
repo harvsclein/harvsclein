@@ -590,9 +590,17 @@
 
   </text>
 
-
+  <text x="470" 
+       y="303"> 
+       <tspan class="dots">. </tspan> 
+       <tspan class="key">Goal</tspan> 
+       <tspan class="dots">: ........................ </tspan> 
+       <tspan class="value">Aspiring Data Analyst / Data Engineer</tspan> 
+  
+  </text>
+     
   <text x="470"
-        y="303">
+        y="330">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">Status</tspan>
@@ -603,7 +611,7 @@
 
 
   <text x="470"
-        y="330">
+        y="357">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">ToolChain</tspan>
@@ -618,7 +626,7 @@
   ========================================================== -->
 
   <text x="470"
-        y="370"
+        y="387"
         class="accent">
 
     - Tech Stack
@@ -627,7 +635,7 @@
 
 
   <text x="470"
-        y="400">
+        y="415">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">Core.Lang</tspan>
@@ -638,7 +646,7 @@
 
 
   <text x="470"
-        y="425">
+        y="440">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">Core.Frontend</tspan>
@@ -649,7 +657,7 @@
 
 
   <text x="470"
-        y="450">
+        y="465">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">Core.Backend</tspan>
@@ -660,7 +668,7 @@
 
 
   <text x="470"
-        y="475">
+        y="490">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">Core.Database</tspan>
@@ -671,7 +679,7 @@
 
 
   <text x="470"
-        y="500">
+        y="515">
 
     <tspan class="dots">. </tspan>
     <tspan class="key">Core.Infra</tspan>
