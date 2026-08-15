@@ -481,75 +481,53 @@
     </text>
 
 
-    <!-- =======================================================
-         LEFT SYSTEM INFO
-    ======================================================== -->
+   <!-- =======================================================
+     SYSTEM STATUS
+======================================================== -->
 
-    <text x="38"
-          y="515"
-          font-family="monospace, Courier New, Consolas"
-          font-size="9"
-          fill="#64748B">
+<text x="38"
+      y="510"
+      class="section">
 
-      <tspan x="38" dy="0" fill="#00E5FF">┌─ SYSTEM</tspan>
-      <tspan x="38" dy="14">│</tspan>
-      <tspan x="38" dy="14">├─ MODE     : STUDENT</tspan>
-      <tspan x="38" dy="14">├─ DOMAIN   : DATA / SOFTWARE</tspan>
-      <tspan x="38" dy="14">├─ SIGNAL   : ACTIVE</tspan>
-      <tspan x="38" dy="14">└─ STATUS   : BUILDING</tspan>
+  ./system --status
 
-    </text>
+</text>
 
-
-    <text x="38"
-          y="604"
-          fill="#00E5FF"
-          font-family="monospace, Courier New, Consolas"
-          font-size="9"
-          font-weight="bold">
-
-      SYSTEM.PROGRESS
-
-    </text>
+<line x1="38"
+      y1="524"
+      x2="392"
+      y2="524"
+      stroke="#00E5FF"
+      stroke-opacity="0.20"/>
 
 
-    <rect x="38"
-          y="616"
-          width="340"
-          height="9"
-          rx="3"
-          fill="#161B22"
-          stroke="#00E5FF"
-          stroke-opacity="0.25"/>
+<!-- System State -->
 
+<text x="38"
+      y="548"
+      font-family="monospace, Courier New, Consolas"
+      font-size="9">
 
-    <rect x="40"
-          y="618"
-          width="250"
-          height="5"
-          rx="2"
-          fill="#00E5FF"
-          opacity="0.9">
+  <tspan fill="#00E5FF">┌─ SYSTEM.STATE</tspan>
 
-      <animate
-        attributeName="opacity"
-        values="0.65;1;0.65"
-        dur="3s"
-        repeatCount="indefinite"/>
+  <tspan x="38" dy="14" fill="#475569">│</tspan>
 
-    </rect>
+  <tspan x="38" dy="14" fill="#8B949E">├─ MODE       </tspan>
+  <tspan fill="#00E5FF">STUDENT</tspan>
 
+  <tspan x="38" dy="14" fill="#8B949E">├─ DOMAIN     </tspan>
+  <tspan fill="#E6EDF3">DATA / SOFTWARE</tspan>
 
-    <text x="38"
-          y="645"
-          fill="#8B949E"
-          font-family="monospace, Courier New, Consolas"
-          font-size="8">
+  <tspan x="38" dy="14" fill="#8B949E">├─ FOCUS      </tspan>
+  <tspan fill="#E6EDF3">DATA ANALYTICS / DATA ENGINEERING</tspan>
 
-      LEARNING • BUILDING • SHIPPING
+  <tspan x="38" dy="14" fill="#8B949E">├─ SIGNAL     </tspan>
+  <tspan fill="#10B981">ACTIVE</tspan>
 
-    </text>
+  <tspan x="38" dy="14" fill="#8B949E">└─ STATUS     </tspan>
+  <tspan fill="#10B981">BUILDING</tspan>
 
+</text>
 
     <!-- =======================================================
          RIGHT: SYSTEM INFO
@@ -733,6 +711,54 @@
   <tspan class="value">github.com/harvsclein</tspan>
 
 </text>
+
+       <!-- =======================================================
+     SYSTEM PROGRESS
+======================================================== -->
+
+<text x="470"
+      y="525"
+      class="accent">
+
+  - System Progress
+
+</text>
+
+
+<text x="470"
+      y="545"
+      class="muted">
+
+  LEARNING • BUILDING • SHIPPING
+
+</text>
+
+
+<rect x="470"
+      y="558"
+      width="650"
+      height="10"
+      rx="3"
+      fill="#161B22"
+      stroke="#00E5FF"
+      stroke-opacity="0.25"/>
+
+
+<rect x="472"
+      y="560"
+      width="470"
+      height="6"
+      rx="2"
+      fill="#00E5FF"
+      opacity="0.9">
+
+  <animate
+    attributeName="opacity"
+    values="0.55;1;0.55"
+    dur="3s"
+    repeatCount="indefinite"/>
+
+</rect>
 
 
     <!-- =======================================================
