@@ -737,7 +737,7 @@
     <tspan class="dots">. </tspan>
     <tspan class="key">Grid.Mail</tspan>
     <tspan class="dots">: ...................... </tspan>
-    <tspan class="value">your.email@example.com</tspan>
+    <tspan class="value">email@example.com</tspan>
 
   </text>
 
@@ -748,7 +748,7 @@
     <tspan class="dots">. </tspan>
     <tspan class="key">Grid.Portfolio</tspan>
     <tspan class="dots">: ................ </tspan>
-    <tspan class="value">your-portfolio.vercel.app</tspan>
+    <tspan class="value">portfolio.vercel.app</tspan>
 
   </text>
 
@@ -759,7 +759,7 @@
     <tspan class="dots">. </tspan>
     <tspan class="key">Grid.LinkedIn</tspan>
     <tspan class="dots">: .................. </tspan>
-    <tspan class="value">your-linkedin-username</tspan>
+    <tspan class="value">linkedin-username</tspan>
 
   </text>
 
