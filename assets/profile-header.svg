@@ -1,11 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      width="1200"
-     height="720"
-     viewBox="0 0 1200 720">
+     height="1100"
+     viewBox="0 0 1200 1100">
 
   <!-- =========================================================
        DEFINITIONS
   ========================================================== -->
+
   <defs>
 
     <!-- Animated ASCII gradient -->
@@ -48,19 +49,20 @@
     </linearGradient>
 
 
-    <!-- Background glow -->
+    <!-- Background -->
     <radialGradient id="bgGlow"
                     cx="30%"
-                    cy="20%"
-                    r="80%">
+                    cy="15%"
+                    r="90%">
 
-      <stop offset="0%" stop-color="#0B1120"/>
-      <stop offset="100%" stop-color="#050816"/>
+      <stop offset="0%" stop-color="#101827"/>
+      <stop offset="55%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#050810"/>
 
     </radialGradient>
 
 
-    <!-- Animated scanline gradient -->
+    <!-- Moving scanline -->
     <linearGradient id="scanGrad"
                     x1="0%"
                     y1="0%"
@@ -71,17 +73,17 @@
             stop-color="#00E5FF"
             stop-opacity="0"/>
 
-      <stop offset="45%"
+      <stop offset="42%"
             stop-color="#00E5FF"
-            stop-opacity="0.04"/>
+            stop-opacity="0.03"/>
 
       <stop offset="50%"
             stop-color="#B6F7FF"
-            stop-opacity="0.65"/>
+            stop-opacity="0.60"/>
 
-      <stop offset="55%"
+      <stop offset="58%"
             stop-color="#00E5FF"
-            stop-opacity="0.04"/>
+            stop-opacity="0.03"/>
 
       <stop offset="100%"
             stop-color="#7C3AED"
@@ -90,7 +92,7 @@
     </linearGradient>
 
 
-    <!-- CRT scanlines -->
+    <!-- CRT horizontal scanlines -->
     <pattern id="scanlines"
              width="4"
              height="4"
@@ -99,12 +101,12 @@
       <rect width="4"
             height="1"
             fill="#7DD3FC"
-            opacity="0.04"/>
+            opacity="0.035"/>
 
     </pattern>
 
 
-    <!-- Cyan glow -->
+    <!-- Glow -->
     <filter id="softGlow"
             x="-50%"
             y="-50%"
@@ -123,14 +125,51 @@
     </filter>
 
 
-    <!-- Font styles -->
+    <!-- Startup reveal -->
+    <mask id="revealMask"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="1200"
+          height="1100">
+
+      <rect x="0"
+            y="0"
+            width="1200"
+            height="0"
+            fill="white">
+
+        <animate
+          attributeName="height"
+          from="0"
+          to="1100"
+          dur="2.8s"
+          begin="0.2s"
+          fill="freeze"/>
+
+      </rect>
+
+    </mask>
+
+
+    <!-- =======================================================
+         TYPOGRAPHY
+    ======================================================== -->
+
     <style>
 
       .ascii {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 5.2px;
+        font-size: 6.2px;
         fill: url(#asciiGrad);
-        letter-spacing: -0.05px;
+        letter-spacing: -0.15px;
+      }
+
+      .head {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 17px;
+        fill: #00E5FF;
+        font-weight: bold;
       }
 
       .key {
@@ -152,16 +191,35 @@
         fill: #475569;
       }
 
-      .head {
+      .accent {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 17px;
+        font-size: 13px;
+        fill: #10B981;
+        font-weight: bold;
+      }
+
+      .section {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 13px;
         fill: #00E5FF;
         font-weight: bold;
       }
 
-      .accent {
+      .muted {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 13px;
+        font-size: 10.5px;
+        fill: #8B949E;
+      }
+
+      .project {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 11px;
+        fill: #E6EDF3;
+      }
+
+      .green {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 11px;
         fill: #10B981;
         font-weight: bold;
       }
@@ -170,7 +228,7 @@
         font-family: "Courier New", Consolas, monospace;
         font-size: 12px;
         fill: #64748B;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.4px;
       }
 
       .panel-title {
@@ -181,37 +239,8 @@
         opacity: 0.8;
       }
 
-      .cursor-blink {
-        fill: #00E5FF;
-      }
-
     </style>
 
-     <mask id="revealMask"
-      maskUnits="userSpaceOnUse"
-      x="0"
-      y="0"
-      width="1200"
-      height="720">
-
-  <rect x="0"
-        y="0"
-        width="1200"
-        height="0"
-        fill="white">
-
-    <animate
-      attributeName="height"
-      from="0"
-      to="720"
-      dur="2.6s"
-      begin="0.2s"
-      fill="freeze"/>
-
-  </rect>
-
-</mask>
-       
   </defs>
 
 
@@ -219,622 +248,787 @@
        BACKGROUND
   ========================================================== -->
 
-  <rect width="1200"
-        height="720"
+  <rect x="0"
+        y="0"
+        width="1200"
+        height="1100"
         rx="18"
         fill="url(#bgGlow)"/>
 
-  <rect width="1200"
-        height="720"
+  <rect x="0"
+        y="0"
+        width="1200"
+        height="1100"
         rx="18"
         fill="url(#scanlines)"/>
 
 
   <!-- =========================================================
-       TERMINAL TITLE BAR
+       TERMINAL TOP BAR
   ========================================================== -->
 
-  <g id="titlebar">
-       
-    <rect x="3"
-          y="3"
-          width="1194"
-          height="54"
-          rx="16"
-          fill="#0B1120"
-          fill-opacity="0.90"/>
-
-     
-
-
-    <!-- macOS dots -->
-
-    <circle cx="28"
-            cy="29"
-            r="6"
-            fill="#EF4444">
-
-      <animate
-        attributeName="opacity"
-        values="1;0.55;1"
-        dur="4s"
-        repeatCount="indefinite"/>
-
-    </circle>
-
-
-    <circle cx="51"
-            cy="29"
-            r="6"
-            fill="#F59E0B">
-
-      <animate
-        attributeName="opacity"
-        values="1;0.55;1"
-        dur="4s"
-        begin="0.3s"
-        repeatCount="indefinite"/>
-
-    </circle>
-
-
-    <circle cx="74"
-            cy="29"
-            r="6"
-            fill="#10B981">
-
-      <animate
-        attributeName="opacity"
-        values="1;0.55;1"
-        dur="4s"
-        begin="0.6s"
-        repeatCount="indefinite"/>
-
-    </circle>
-
-       
-
-
-    <!-- Terminal prompt -->
-
-    <text x="600"
-          y="35"
-          text-anchor="middle"
-          class="term-label">
-
-      harvsclein@devos ~ % ./profile.sh --live
-
-    </text>
-
-
-    <!-- Online indicator -->
-
-    <circle cx="1088"
-            cy="29"
-            r="4"
-            fill="#00E5FF"
-            filter="url(#softGlow)">
-
-      <animate
-        attributeName="opacity"
-        values="1;0.2;1"
-        dur="1.4s"
-        repeatCount="indefinite"/>
-
-    </circle>
-
-
-    <text x="1100"
-          y="34"
-          fill="#00E5FF"
-          font-family="monospace, Courier New, Consolas"
-          font-size="12"
-          font-weight="bold">
-
-      [ONLINE]
-
-    </text>
-
-  </g>
-
-<g mask="url(#revealMask)">
-  <!-- =========================================================
-       MAIN LAYOUT
-  ========================================================== -->
-
-  <!-- Vertical divider -->
-
-  <line x1="430"
-        y1="78"
-        x2="430"
-        y2="690"
-        stroke="#00E5FF"
-        stroke-opacity="0.20"/>
-
-
-  <!-- =========================================================
-       LEFT PANEL
-  ========================================================== -->
-
-  <rect x="20"
-        y="78"
-        width="390"
-        height="612"
-        rx="14"
+  <rect x="3"
+        y="3"
+        width="1194"
+        height="54"
+        rx="16"
         fill="#0B1120"
-        fill-opacity="0.28"
-        stroke="url(#borderGrad)"
-        stroke-width="1"
-        opacity="0.45"/>
+        fill-opacity="0.94"/>
 
 
-  <text x="38"
-        y="100"
-        class="panel-title">
+  <!-- macOS controls -->
 
-    VISUAL.MAP
-
-  </text>
-
-
-  <line x1="38"
-        y1="114"
-        x2="392"
-        y2="114"
-        stroke="#00E5FF"
-        stroke-opacity="0.25"/>
-
-
-  <!-- =========================================================
-       ASCII PORTRAIT
-  ========================================================== -->
-
-  <text x="38"
-        y="140"
-        class="ascii"
-        xml:space="preserve">
-
-    <tspan x="38" dy="0">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@%@</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@%%%</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@%%</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*++++**###%#######%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@%%</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@%%#**+++==-------::::::::=+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%@@@%%%%%</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#####**+=-::::::::::::.::::-++*##%%%%%%%%%%%%%####%%%%%%%%%%%%@@@@%%</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::-=+*##%%%#*=-----=+#%%%%%%%%%%%%%#+</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::.::::::-=-::::::-++--+#%%%%%%%%%+===</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%%%%@@@@@@@@@@%%########+-::::::::::::::::::::::::::......:::::::::-=**+=--*%%%%%%*=====</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%%@@@@@@@@@@@%%%######*+=-:::::::::::::::::::::::::::........::::::--=*##+=--#%%%%*=----+</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@@@@@%%%######*=-::::::-*%@@@#+:::::::::::::::.......::::::---=+#%#+--+#%%%+---:=-</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@%@%%%%######+-:::::#@*::.:....-%@*:::::::::::.......:::::----==#%#=-----+*#*+----</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%##%%%@@@@@@%%%%%###*+=::::-%#::::::::::::::=%*::::::::::....:::::::-----=*#*=-+=----=+**+=-</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%##%%%%%%%%%%%%%##**+=-:::*#-:::::::::::::::::+%=::::::::...::::::-=++++===**-=++=----+*****</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%###%%%%%%%%%%%###***=*@@%*-::::::--==++++=----=@=::::::::::::-+###*+++*##%%*=-+++=--=******</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%###%%%%%%##%%%%##**+-%@@%-:::::--=*%%++%%%*=---+%-:--:::.::-##=-------=====*%*=+**+=+*##***</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%#############%###**==@@@*::::::--=#%%%%%%%#+----%+---:::.:*#-::------========*@****+****#**</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%###++**#######**=-=%@@+::::::---*%%%%%%%#+----#*---::.:#+::---------=======+=%#*++***+===</tspan>
-    <tspan x="38" dy="7">%%%%%%%%%%%#+==+****####**+-::::**::::::---=+#%%###*=---:%@@@@%-:**----==++++*++======+==%+-+*======</tspan>
-    <tspan x="38" dy="7">%%%%###*+=====+******#***+-:::::=%-::::::--------------:=%:::::-#%=--==+##%%%%%%#*+++=+==*#+========</tspan>
-    <tspan x="38" dy="7">#**++=====---=+*********+=-:::::-**-::::-------------::=@-::::::=#=-=+*#%%%%%%@@@%#*+++--+@@%+======</tspan>
-    <tspan x="38" dy="7">+++=====-----=+****+***+=-:::::::-*#-::----------:::::+%-:::::::=#==+*#%@%%##%@@%%#*+*#++*@@@+======</tspan>
-    <tspan x="38" dy="7">++=====------=++**+++++=-:::::::::-=%*-:::::::::::::=#*:::::::::-#*+*#%%%%%%%%%%%%#***#*+#@@%=====--</tspan>
-    <tspan x="38" dy="7">++====-------==++++++==--::::::::::::-*#+-:::::::=#%+-::::::::::-+#+*#%######%%%%#***#+=+@@@#===----</tspan>
-    <tspan x="38" dy="7">======--------=+++++==------------::...:-=+*###*+-::::::::::------*%*####**###%%#***#*=+@+=====-----</tspan>
-    <tspan x="38" dy="7">---------------=++====--------=---::::::::::::::::::::::::::-----==+@%##########****+=%#====--------</tspan>
-    <tspan x="38" dy="7">-----------::::--==---------------:::::::::::::::::::::::::-----====*%@%##*****++*+*%#======--------</tspan>
-    <tspan x="38" dy="7">-----------:::::------------------::::----::::::::::--:::--=----===+*####%@%%#%%%%#+=======---------</tspan>
-    <tspan x="38" dy="7">-:::::----:::::::::::--------------:::----:::::::::---=====+=---==++*##*++++++=============--------=</tspan>
-    <tspan x="38" dy="7">::::::::--:::::::::::::-----------:::::::::::::::---=+***++=----====+##*+++++===============------==</tspan>
-    <tspan x="38" dy="7">:::::::::--:::::::::::::----------::--::::::--::--=+#%%%##**#+=======**++++==================---====</tspan>
-    <tspan x="38" dy="7">::::::::::--::::::::::::------------==-:::-------=+##+=+%%%%%%%#++++++*+++=============++===========</tspan>
-    <tspan x="38" dy="7">:::::::::::--::::::::::::::--------===-::--------=*#+=+=+++#%@@%%%%*++++================++==========</tspan>
-    <tspan x="38" dy="7">:::::::::::-----:::-----------------==----------=+*%%@@@@%##@@@@%%%*====================+*+=========</tspan>
-    <tspan x="38" dy="7">::::::::::::-----------------------===--------===++*%@@@@##%@@@%#*======================+*+=========</tspan>
-    <tspan x="38" dy="7">:::::::::::::---------------------=====*@@%+====++++*%@@@@%@@@@@%*+======================**++=======</tspan>
-    <tspan x="38" dy="7">::::::::::::-----:::----------=======+%@@@@@@*+++*****#%@@@@@@@%#*+++++++++==============+**+=======</tspan>
-    <tspan x="38" dy="7">::::::::::::----::::-----------=++===@@@@@@@@@%******#####%%%%%%##*=+**+++++++++++=======++**+======</tspan>
-    <tspan x="38" dy="7">:::::::---------:::--------------==+%@@@@@@@@@@@#**##%%%%###%%%%##*=+**=+**++++*****++++==+***++====</tspan>
-    <tspan x="38" dy="7">-----------------::----------------*@@@@@@@@@@@@@#****############*==+-----++++********+*++****++===</tspan>
-    <tspan x="38" dy="7">-----------------:::--------------=%@@@@@@@@@@@@@@%%@%%%%%%%%%####*----------=+*********++++****++==</tspan>
-    <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@*----==*############**++*##*++=</tspan>
-    <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*++***############**###*###**++</tspan>
-    <tspan x="38" dy="7">------------------::---------------+*##########%%@@@@@@@@@@@@@@@@@@@@+=--==+**###**+++*+++***#####*+</tspan>
-    <tspan x="38" dy="7">--------------------------------------------==+**##%%%@@@@@@@@@@@@@@#---------==++=====----==++**###</tspan>
-    <tspan x="38" dy="7">-------------------------------------------===+*####%%%@@@@@@@@@@@@%--------------------------==+***</tspan>
-    <tspan x="38" dy="7">------------------------------------------===++*##%%%%%%%@@@@@@@@@@=--::::---------------------==+**</tspan>
-    <tspan x="38" dy="7">-----------------------------------------=======+##%%%+=-=#@@@@@@%=::::::::------:::-------------==+</tspan>
-    <tspan x="38" dy="7">---------------------------------------===------==**===----=#@@@#-::::::::::---:::-----------------=</tspan>
-    <tspan x="38" dy="7">---------------------------------------::::::----=--===-------==--:::::::-:::---:::-----------------</tspan>
-    <tspan x="38" dy="7">------------------------------====--::::::::::----====-------------::-----:::----::-----------------</tspan>
-
-  </text>
-
-
-  <!-- =========================================================
-       LEFT SYSTEM INFO
-  ========================================================== -->
-
-  <text x="38"
-        y="515"
-        font-family="monospace, Courier New, Consolas"
-        font-size="9"
-        fill="#64748B">
-
-    <tspan x="38" dy="0" fill="#00E5FF">┌─ SYSTEM</tspan>
-    <tspan x="38" dy="14">│</tspan>
-    <tspan x="38" dy="14">├─ MODE     : STUDENT</tspan>
-    <tspan x="38" dy="14">├─ DOMAIN   : DATA / SOFTWARE</tspan>
-    <tspan x="38" dy="14">├─ SIGNAL   : ACTIVE</tspan>
-    <tspan x="38" dy="14">└─ STATUS   : BUILDING</tspan>
-
-  </text>
-
-
-  <!-- Progress -->
-
-  <text x="38"
-        y="604"
-        fill="#00E5FF"
-        font-family="monospace, Courier New, Consolas"
-        font-size="9"
-        font-weight="bold">
-
-    SYSTEM.PROGRESS
-
-  </text>
-
-
-  <rect x="38"
-        y="616"
-        width="340"
-        height="9"
-        rx="3"
-        fill="#161B22"
-        stroke="#00E5FF"
-        stroke-opacity="0.25"/>
-
-
-  <rect x="40"
-        y="618"
-        width="250"
-        height="5"
-        rx="2"
-        fill="#00E5FF"
-        opacity="0.9">
+  <circle cx="28"
+          cy="29"
+          r="6"
+          fill="#EF4444">
 
     <animate
       attributeName="opacity"
-      values="0.65;1;0.65"
-      dur="3s"
+      values="1;0.55;1"
+      dur="4s"
       repeatCount="indefinite"/>
 
-  </rect>
+  </circle>
 
 
-  <text x="38"
-        y="645"
-        fill="#8B949E"
-        font-family="monospace, Courier New, Consolas"
-        font-size="8">
-
-    LEARNING • BUILDING • SHIPPING
-
-  </text>
-
-
-  <!-- =========================================================
-       RIGHT PANEL
-  ========================================================== -->
-
-  <rect x="450"
-        y="78"
-        width="730"
-        height="612"
-        rx="14"
-        fill="#0B1120"
-        fill-opacity="0.28"
-        stroke="url(#borderGrad)"
-        stroke-width="1"
-        opacity="0.45"/>
-
-
-  <text x="470"
-        y="100"
-        class="panel-title">
-
-    SYSTEM.INFO
-
-  </text>
-
-
-  <line x1="470"
-        y1="114"
-        x2="1155"
-        y2="114"
-        stroke="#00E5FF"
-        stroke-opacity="0.25"/>
-
-
-  <!-- =========================================================
-       IDENTITY
-  ========================================================== -->
-
-  <text x="470"
-        y="145"
-        class="head">
-
-    harvsclein@devos
-
-  </text>
-
-
-  <text x="470"
-        y="165"
-        class="dots">
-
-    ─────────────────────────────────────────────────────────────
-
-  </text>
-
-
-  <text x="470"
-        y="195">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Subject</tspan>
-    <tspan class="dots">: .......................... </tspan>
-    <tspan class="value">Harvey Alvaran</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="222">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Role</tspan>
-    <tspan class="dots">: ............................. </tspan>
-    <tspan class="value">BSIT Student</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="249">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Origin</tspan>
-    <tspan class="dots">: ........................... </tspan>
-    <tspan class="value">Bulacan, Philippines</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="276">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Education</tspan>
-    <tspan class="dots">: ......................... </tspan>
-    <tspan class="value">BS Information Technology</tspan>
-
-  </text>
-
-  <text x="470" 
-       y="303"> 
-       <tspan class="dots">. </tspan> 
-       <tspan class="key">Goal</tspan> 
-       <tspan class="dots">: ........................ </tspan> 
-       <tspan class="value">Aspiring Data Analyst / Data Engineer</tspan> 
-  
-  </text>
-     
-  <text x="470"
-        y="330">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Status</tspan>
-    <tspan class="dots">: ..................... </tspan>
-    <tspan class="value">Building • Learning • Shipping</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="357">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">ToolChain</tspan>
-    <tspan class="dots">: ................. </tspan>
-    <tspan class="value">Python • SQL • Power BI • Git</tspan>
-
-  </text>
-
-
-  <!-- =========================================================
-       TECH STACK
-  ========================================================== -->
-
-  <text x="470"
-        y="387"
-        class="accent">
-
-    - Tech Stack
-
-  </text>
-
-
-  <text x="470"
-        y="415">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Core.Lang</tspan>
-    <tspan class="dots">: ............... </tspan>
-    <tspan class="value">Python • Java • C • C++</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="440">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Core.Frontend</tspan>
-    <tspan class="dots">: ......... </tspan>
-    <tspan class="value">HTML • CSS • JavaScript</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="465">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Core.Backend</tspan>
-    <tspan class="dots">: ........... </tspan>
-    <tspan class="value">REST APIs</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="490">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Core.Database</tspan>
-    <tspan class="dots">: .......... </tspan>
-    <tspan class="value">MySQL</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="515">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Core.Infra</tspan>
-    <tspan class="dots">: ............. </tspan>
-    <tspan class="value">Git • GitHub • Linux</tspan>
-
-  </text>
-
-
-  <!-- =========================================================
-       CONTACT
-  ========================================================== -->
-
-  <text x="470"
-        y="540"
-        class="accent">
-
-    - Contact
-
-  </text>
-
-
-  <text x="470"
-        y="567">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Grid.Mail</tspan>
-    <tspan class="dots">: ...................... </tspan>
-    <tspan class="value">email@example.com</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="592">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Grid.Portfolio</tspan>
-    <tspan class="dots">: ................ </tspan>
-    <tspan class="value">portfolio.vercel.app</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="617">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Grid.LinkedIn</tspan>
-    <tspan class="dots">: .................. </tspan>
-    <tspan class="value">linkedin-username</tspan>
-
-  </text>
-
-
-  <text x="470"
-        y="642">
-
-    <tspan class="dots">. </tspan>
-    <tspan class="key">Grid.Github</tspan>
-    <tspan class="dots">: ................... </tspan>
-    <tspan class="value">github.com/harvsclein</tspan>
-
-  </text>
-
-
-  <!-- =========================================================
-       LIVE STATS
-  ========================================================== -->
-
-  <text x="470"
-        y="671"
-        class="accent">
-
-    - Live Stats
-
-  </text>
-
-
-  <text x="600"
-        y="671"
-        class="value"
-        font-size="11">
-
-    See live GitHub stats badges below ↓
-
-  </text>
-
-
-  <!-- Blinking cursor -->
-
-  <rect x="1138"
-        y="656"
-        width="8"
-        height="14"
-        class="cursor-blink"
-        opacity="0">
+  <circle cx="51"
+          cy="29"
+          r="6"
+          fill="#F59E0B">
 
     <animate
       attributeName="opacity"
-      values="0;0;1;0;1;0;1;0"
-      keyTimes="0;0.01;0.02;0.3;0.5;0.7;0.85;1"
+      values="1;0.55;1"
+      dur="4s"
+      begin="0.3s"
+      repeatCount="indefinite"/>
+
+  </circle>
+
+
+  <circle cx="74"
+          cy="29"
+          r="6"
+          fill="#10B981">
+
+    <animate
+      attributeName="opacity"
+      values="1;0.55;1"
+      dur="4s"
+      begin="0.6s"
+      repeatCount="indefinite"/>
+
+  </circle>
+
+
+  <!-- Terminal title -->
+
+  <text x="600"
+        y="35"
+        text-anchor="middle"
+        class="term-label">
+
+    harvsclein@devos ~ % ./profile.sh --live
+
+  </text>
+
+
+  <!-- Online status -->
+
+  <circle cx="1088"
+          cy="29"
+          r="4"
+          fill="#00E5FF"
+          filter="url(#softGlow)">
+
+    <animate
+      attributeName="opacity"
+      values="1;0.2;1"
       dur="1.4s"
       repeatCount="indefinite"/>
 
-  </rect>
-</g>
+  </circle>
+
+
+  <text x="1100"
+        y="34"
+        fill="#00E5FF"
+        font-family="monospace, Courier New, Consolas"
+        font-size="12"
+        font-weight="bold">
+
+    [ONLINE]
+
+  </text>
+
+
+  <!-- =========================================================
+       STARTUP REVEAL
+  ========================================================== -->
+
+  <g mask="url(#revealMask)">
+
+
+    <!-- =======================================================
+         TOP MAIN SECTION
+    ======================================================== -->
+
+    <!-- Vertical divider -->
+
+    <line x1="430"
+          y1="78"
+          x2="430"
+          y2="650"
+          stroke="#00E5FF"
+          stroke-opacity="0.18"/>
+
+
+    <!-- =======================================================
+         LEFT: VISUAL.MAP
+    ======================================================== -->
+
+    <rect x="20"
+          y="78"
+          width="390"
+          height="565"
+          rx="14"
+          fill="#0B1120"
+          fill-opacity="0.28"
+          stroke="url(#borderGrad)"
+          stroke-width="1"
+          opacity="0.45"/>
+
+
+    <text x="38"
+          y="100"
+          class="panel-title">
+
+      VISUAL.MAP
+
+    </text>
+
+
+    <line x1="38"
+          y1="114"
+          x2="392"
+          y2="114"
+          stroke="#00E5FF"
+          stroke-opacity="0.25"/>
+
+
+    <!-- =======================================================
+         ASCII PORTRAIT
+    ======================================================== -->
+
+    <text x="38"
+          y="140"
+          class="ascii"
+          xml:space="preserve">
+
+      <tspan x="38" dy="0">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@%@</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@%%%</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@%%</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*++++**###%#######%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@%%</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@%%#**+++==-------::::::::=+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%@@@%%%%%</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#####**+=-::::::::::::.::::-++*##%%%%%%%%%%%%%####%%%%%%%%%%%%@@@@%%</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::-=+*##%%%#*=-----=+#%%%%%%%%%%%%%#+</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%%%@@@@@@@@@@%%#######*=-::::::::::::::::::::::::.::::::-=-::::::-++--+#%%%%%%%%%+===</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%%%%@@@@@@@@@@%%########+-::::::::::::::::::::::::::......:::::::::-=**+=--*%%%%%%*=====</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%%@@@@@@@@@@@%%%######*+=-:::::::::::::::::::::::::::........::::::--=*##+=--#%%%%*=----+</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@@@@@%%%######*=-::::::-*%@@@#+:::::::::::::::.......::::::---=+#%#+--+#%%%+---:=-</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%%@@@@@@@%@%%%%######+-:::::#@*::.:....-%@*:::::::::::.......:::::----==#%#=-----+*#*+----</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%##%%%@@@@@@%%%%%###*+=::::-%#::::::::::::::=%*::::::::::....:::::::-----=*#*=-+=----=+**+=-</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%##%%%%%%%%%%%%%##**+=-:::*#-:::::::::::::::::+%=::::::::...::::::-=++++===**-=++=----+*****</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%###%%%%%%%%%%%###***=*@@%*-::::::--==++++=----=@=::::::::::::-+###*+++*##%%*=-+++=--=******</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%###%%%%%%##%%%%##**+-%@@%-:::::--=*%%++%%%*=---+%-:--:::.::-##=-------=====*%*=+**+=+*##***</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%#############%###**==@@@*::::::--=#%%%%%%%#+----%+---:::.:*#-::------========*@****+****#**</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%###++**#######**=-=%@@+::::::---*%%%%%%%#+----#*---::.:#+::---------=======+=%#*++***+===</tspan>
+      <tspan x="38" dy="7">%%%%%%%%%%%#+==+****####**+-::::**::::::---=+#%%###*=---:%@@@@%-:**----==++++*++======+==%+-+*======</tspan>
+      <tspan x="38" dy="7">%%%%###*+=====+******#***+-:::::=%-::::::--------------:=%:::::-#%=--==+##%%%%%%#*+++=+==*#+========</tspan>
+      <tspan x="38" dy="7">#**++=====---=+*********+=-:::::-**-::::-------------::=@-::::::=#=-=+*#%%%%%%@@@%#*+++--+@@%+======</tspan>
+      <tspan x="38" dy="7">+++=====-----=+****+***+=-:::::::-*#-::----------:::::+%-:::::::=#==+*#%@%%##%@@%%#*+*#++*@@@+======</tspan>
+      <tspan x="38" dy="7">++=====------=++**+++++=-:::::::::-=%*-:::::::::::::=#*:::::::::-#*+*#%%%%%%%%%%%%#***#*+#@@%=====--</tspan>
+      <tspan x="38" dy="7">++====-------==++++++==--::::::::::::-*#+-:::::::=#%+-::::::::::-+#+*#%######%%%%#***#+=+@@@#===----</tspan>
+      <tspan x="38" dy="7">======--------=+++++==------------::...:-=+*###*+-::::::::::------*%*####**###%%#***#*=+@+=====-----</tspan>
+      <tspan x="38" dy="7">---------------=++====--------=---::::::::::::::::::::::::::-----==+@%##########****+=%#====--------</tspan>
+      <tspan x="38" dy="7">-----------::::--==---------------:::::::::::::::::::::::::-----====*%@%##*****++*+*%#======--------</tspan>
+      <tspan x="38" dy="7">-----------:::::------------------::::----::::::::::--:::--=----===+*####%@%%#%%%%#+=======---------</tspan>
+      <tspan x="38" dy="7">-:::::----:::::::::::--------------:::----:::::::::---=====+=---==++*##*++++++=============--------=</tspan>
+      <tspan x="38" dy="7">::::::::--:::::::::::::-----------:::::::::::::::---=+***++=----====+##*+++++===============------==</tspan>
+      <tspan x="38" dy="7">:::::::::--:::::::::::::----------::--::::::--::--=+#%%%##**#+=======**++++==================---====</tspan>
+      <tspan x="38" dy="7">::::::::::--::::::::::::------------==-:::-------=+##+=+%%%%%%%#++++++*+++=============++===========</tspan>
+      <tspan x="38" dy="7">:::::::::::--::::::::::::::--------===-::--------=*#+=+=+++#%@@%%%%*++++================++==========</tspan>
+      <tspan x="38" dy="7">:::::::::::-----:::-----------------==----------=+*%%@@@@%##@@@@%%%*====================+*+=========</tspan>
+      <tspan x="38" dy="7">::::::::::::-----------------------===--------===++*%@@@@##%@@@%#*======================+*+=========</tspan>
+      <tspan x="38" dy="7">:::::::::::::---------------------=====*@@%+====++++*%@@@@%@@@@@%*+======================**++=======</tspan>
+      <tspan x="38" dy="7">::::::::::::-----:::----------=======+%@@@@@@*+++*****#%@@@@@@@%#*+++++++++==============+**+=======</tspan>
+      <tspan x="38" dy="7">::::::::::::----::::-----------=++===@@@@@@@@@%******#####%%%%%%##*=+**+++++++++++=======++**+======</tspan>
+      <tspan x="38" dy="7">:::::::---------:::--------------==+%@@@@@@@@@@@#**##%%%%###%%%%##*=+**=+**++++*****++++==+***++====</tspan>
+      <tspan x="38" dy="7">-----------------::----------------*@@@@@@@@@@@@@#****############*==+-----++++********+*++****++===</tspan>
+      <tspan x="38" dy="7">-----------------:::--------------=%@@@@@@@@@@@@@@%%@%%%%%%%%%####*----------=+*********++++****++==</tspan>
+      <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@*----==*############**++*##*++=</tspan>
+      <tspan x="38" dy="7">-----------------::::-------------+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*++***############**###*###**++</tspan>
+      <tspan x="38" dy="7">------------------::---------------+*##########%%@@@@@@@@@@@@@@@@@@@@+=--==+**###**+++*+++***#####*+</tspan>
+      <tspan x="38" dy="7">--------------------------------------------==+**##%%%@@@@@@@@@@@@@@#---------==++=====----==++**###</tspan>
+      <tspan x="38" dy="7">-------------------------------------------===+*####%%%@@@@@@@@@@@@%--------------------------==+***</tspan>
+      <tspan x="38" dy="7">------------------------------------------===++*##%%%%%%%@@@@@@@@@@=--::::---------------------==+**</tspan>
+      <tspan x="38" dy="7">-----------------------------------------=======+##%%%+=-=#@@@@@@%=::::::::------:::-------------==+</tspan>
+      <tspan x="38" dy="7">---------------------------------------===------==**===----=#@@@#-::::::::::---:::-----------------=</tspan>
+      <tspan x="38" dy="7">---------------------------------------::::::----=--===-------==--:::::::-:::---:::-----------------</tspan>
+      <tspan x="38" dy="7">------------------------------====--::::::::::----====-------------::-----:::----::-----------------</tspan>
+
+    </text>
+
+
+    <!-- =======================================================
+         LEFT SYSTEM INFO
+    ======================================================== -->
+
+    <text x="38"
+          y="515"
+          font-family="monospace, Courier New, Consolas"
+          font-size="9"
+          fill="#64748B">
+
+      <tspan x="38" dy="0" fill="#00E5FF">┌─ SYSTEM</tspan>
+      <tspan x="38" dy="14">│</tspan>
+      <tspan x="38" dy="14">├─ MODE     : STUDENT</tspan>
+      <tspan x="38" dy="14">├─ DOMAIN   : DATA / SOFTWARE</tspan>
+      <tspan x="38" dy="14">├─ SIGNAL   : ACTIVE</tspan>
+      <tspan x="38" dy="14">└─ STATUS   : BUILDING</tspan>
+
+    </text>
+
+
+    <text x="38"
+          y="604"
+          fill="#00E5FF"
+          font-family="monospace, Courier New, Consolas"
+          font-size="9"
+          font-weight="bold">
+
+      SYSTEM.PROGRESS
+
+    </text>
+
+
+    <rect x="38"
+          y="616"
+          width="340"
+          height="9"
+          rx="3"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.25"/>
+
+
+    <rect x="40"
+          y="618"
+          width="250"
+          height="5"
+          rx="2"
+          fill="#00E5FF"
+          opacity="0.9">
+
+      <animate
+        attributeName="opacity"
+        values="0.65;1;0.65"
+        dur="3s"
+        repeatCount="indefinite"/>
+
+    </rect>
+
+
+    <text x="38"
+          y="645"
+          fill="#8B949E"
+          font-family="monospace, Courier New, Consolas"
+          font-size="8">
+
+      LEARNING • BUILDING • SHIPPING
+
+    </text>
+
+
+    <!-- =======================================================
+         RIGHT: SYSTEM INFO
+    ======================================================== -->
+
+    <rect x="450"
+          y="78"
+          width="730"
+          height="565"
+          rx="14"
+          fill="#0B1120"
+          fill-opacity="0.28"
+          stroke="url(#borderGrad)"
+          stroke-width="1"
+          opacity="0.45"/>
+
+
+    <text x="470"
+          y="100"
+          class="panel-title">
+
+      SYSTEM.INFO
+
+    </text>
+
+
+    <line x1="470"
+          y1="114"
+          x2="1155"
+          y2="114"
+          stroke="#00E5FF"
+          stroke-opacity="0.25"/>
+
+
+    <text x="470"
+          y="145"
+          class="head">
+
+      harvsclein@devos
+
+    </text>
+
+
+    <text x="470"
+          y="165"
+          class="dots">
+
+      ─────────────────────────────────────────────────────────────
+
+    </text>
+
+
+    <text x="470"
+          y="195">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">Subject</tspan>
+      <tspan class="dots">: .......................... </tspan>
+      <tspan class="value">Harvey Alvaran</tspan>
+
+    </text>
+
+
+    <text x="470"
+          y="222">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">Role</tspan>
+      <tspan class="dots">: .................... </tspan>
+      <tspan class="value">BSIT Student</tspan>
+
+    </text>
+
+
+    <text x="470"
+          y="249">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">Origin</tspan>
+      <tspan class="dots">: ........................... </tspan>
+      <tspan class="value">Bulacan, Philippines</tspan>
+
+    </text>
+
+
+    <text x="470"
+          y="276">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">Education</tspan>
+      <tspan class="dots">: ......................... </tspan>
+      <tspan class="value">BS Information Technology</tspan>
+
+    </text>
+
+
+    <text x="470"
+          y="303">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">Goal</tspan>
+      <tspan class="dots">: ........................ </tspan>
+      <tspan class="value">Aspiring Data Analyst / Data Engineer</tspan>
+
+    </text>
+
+
+    <text x="470"
+          y="330">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">Status</tspan>
+      <tspan class="dots">: ..................... </tspan>
+      <tspan class="value">Building • Learning • Shipping</tspan>
+
+    </text>
+
+
+    <text x="470"
+          y="357">
+
+      <tspan class="dots">. </tspan>
+      <tspan class="key">ToolChain</tspan>
+      <tspan class="dots">: ................. </tspan>
+      <tspan class="value">Python • SQL • Power BI • Git</tspan>
+
+    </text>
+
+
+    <!-- =======================================================
+         LOWER OVERVIEW SECTION
+    ======================================================== -->
+
+    <line x1="20"
+          y1="680"
+          x2="1180"
+          y2="680"
+          stroke="#00E5FF"
+          stroke-opacity="0.18"/>
+
+
+    <!-- LEFT LOWER PANEL -->
+
+    <rect x="20"
+          y="700"
+          width="560"
+          height="370"
+          rx="14"
+          fill="#0B1120"
+          fill-opacity="0.30"
+          stroke="url(#borderGrad)"
+          stroke-width="1"
+          opacity="0.45"/>
+
+
+    <text x="42"
+          y="730"
+          class="section">
+
+      cat about_me.txt
+
+    </text>
+
+
+    <line x1="42"
+          y1="744"
+          x2="558"
+          y2="744"
+          stroke="#00E5FF"
+          stroke-opacity="0.20"/>
+
+
+    <!-- About -->
+
+    <text x="42"
+          y="772"
+          class="value">
+
+      <tspan x="42" dy="0">
+        I'm a BSIT student interested in data analytics
+      </tspan>
+
+      <tspan x="42" dy="19">
+        and software development, building practical
+      </tspan>
+
+      <tspan x="42" dy="19">
+        projects with data, code, and technology.
+      </tspan>
+
+    </text>
+
+
+    <text x="42"
+          y="838"
+          class="muted">
+
+      philosophy . . . . learn → build → analyze → improve
+
+    </text>
+
+
+    <!-- Education -->
+
+    <text x="42"
+          y="878"
+          class="section">
+
+      ls -la ./academic/
+
+    </text>
+
+
+    <text x="42"
+          y="906">
+
+      <tspan class="key">Degree</tspan>
+      <tspan class="dots"> . . . . . . . . </tspan>
+      <tspan class="value">BS Information Technology</tspan>
+
+    </text>
+
+
+    <text x="42"
+          y="930">
+
+      <tspan class="key">Level</tspan>
+      <tspan class="dots"> . . . . . . . . . . . </tspan>
+      <tspan class="value">2nd Year</tspan>
+
+    </text>
+
+
+    <text x="42"
+          y="954">
+
+      <tspan class="key">Institution</tspan>
+      <tspan class="dots"> . . . . </tspan>
+      <tspan class="value">Polytechnic University of the Philippines</tspan>
+
+    </text>
+
+
+    <text x="42"
+          y="990"
+          class="green">
+
+      KEY COURSEWORK
+
+    </text>
+
+
+    <text x="42"
+          y="1012"
+          class="muted">
+
+      ├─ Computer Architecture &amp; Logic Systems
+
+    </text>
+
+
+    <text x="42"
+          y="1032"
+          class="muted">
+
+      ├─ Data Structures &amp; Algorithms
+
+    </text>
+
+
+    <text x="42"
+          y="1052"
+          class="muted">
+
+      └─ Database Management Systems
+
+    </text>
+
+
+    <!-- RIGHT LOWER PANEL -->
+
+    <rect x="600"
+          y="700"
+          width="580"
+          height="370"
+          rx="14"
+          fill="#0B1120"
+          fill-opacity="0.30"
+          stroke="url(#borderGrad)"
+          stroke-width="1"
+          opacity="0.45"/>
+
+
+    <!-- Active projects -->
+
+    <text x="622"
+          y="730"
+          class="section">
+
+      ./get_active_projects.sh
+
+    </text>
+
+
+    <line x1="622"
+          y1="744"
+          x2="1158"
+          y2="744"
+          stroke="#00E5FF"
+          stroke-opacity="0.20"/>
+
+
+    <!-- Project 1 -->
+
+    <text x="622"
+          y="773"
+          class="green">
+
+      [01] GLOBAL LAYOFFS ANALYSIS
+
+    </text>
+
+
+    <text x="622"
+          y="793"
+          class="project">
+
+      SQL data cleaning + exploratory analysis
+
+    </text>
+
+
+    <!-- Project 2 -->
+
+    <text x="622"
+          y="824"
+          class="green">
+
+      [02] AI JOB MARKET ANALYSIS
+
+    </text>
+
+
+    <text x="622"
+          y="844"
+          class="project">
+
+      Python + Power BI analysis of the global AI job market
+
+    </text>
+
+
+    <!-- Project 3 -->
+
+    <text x="622"
+          y="875"
+          class="green">
+
+      [03] VIDEO GAME SALES ANALYSIS
+
+    </text>
+
+
+    <text x="622"
+          y="895"
+          class="project">
+
+      Sales performance across platforms and regions
+
+    </text>
+
+
+    <!-- Project 4 -->
+
+    <text x="622"
+          y="926"
+          class="green">
+
+      [04] JOB RECRUITMENT FUNNEL
+
+    </text>
+
+
+    <text x="622"
+          y="946"
+          class="project">
+
+      Recruitment conversion and drop-off analysis
+
+    </text>
+
+
+    <!-- Goal -->
+
+    <text x="622"
+          y="978"
+          class="green">
+
+      CURRENT.GOAL
+
+    </text>
+
+
+    <text x="622"
+          y="1001"
+          class="value">
+
+      <tspan x="622" dy="0">
+        Build stronger analytics projects while developing
+      </tspan>
+
+      <tspan x="622" dy="19">
+        the skills needed for Data Analytics and Data Engineering.
+      </tspan>
+
+    </text>
+
+
+    <!-- Soft skills -->
+
+    <text x="622"
+          y="1046"
+          class="section">
+
+      ./skills --soft
+
+    </text>
+
+
+    <text x="622"
+          y="1065"
+          class="muted">
+
+      Analytical Thinking • Problem Solving • Active Learning
+
+    </text>
+
+
+    <!-- =======================================================
+         BLINKING CURSOR
+    ======================================================== -->
+
+    <rect x="1115"
+          y="1051"
+          width="8"
+          height="15"
+          fill="#00E5FF">
+
+      <animate
+        attributeName="opacity"
+        values="0;0;1;0;1;0;1;0"
+        keyTimes="0;0.01;0.02;0.3;0.5;0.7;0.85;1"
+        dur="1.4s"
+        repeatCount="indefinite"/>
+
+    </rect>
+
+
+  </g>
+
 
   <!-- =========================================================
        MOVING SCANLINE
   ========================================================== -->
 
   <rect x="0"
-        y="-100"
+        y="-110"
         width="1200"
-        height="100"
+        height="110"
         fill="url(#scanGrad)"
-        opacity="0.7"
+        opacity="0.72"
         style="mix-blend-mode:screen">
 
     <animateTransform
       attributeName="transform"
       type="translate"
-      from="0 -100"
-      to="0 820"
-      dur="6.5s"
+      from="0 -110"
+      to="0 1220"
+      dur="7s"
       repeatCount="indefinite"/>
 
   </rect>
@@ -847,7 +1041,7 @@
   <rect x="3"
         y="3"
         width="1194"
-        height="714"
+        height="1094"
         rx="16"
         fill="none"
         stroke="url(#borderGrad)"
