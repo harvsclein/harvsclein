@@ -678,6 +678,62 @@
 
     </text>
 
+       <!-- =======================================================
+     CONTACT
+======================================================== -->
+
+<text x="470"
+      y="392"
+      class="accent">
+
+  - Contact
+
+</text>
+
+
+<text x="470"
+      y="418">
+
+  <tspan class="dots">. </tspan>
+  <tspan class="key">Grid.Mail</tspan>
+  <tspan class="dots">: ...................... </tspan>
+  <tspan class="value">your.email@example.com</tspan>
+
+</text>
+
+
+<text x="470"
+      y="443">
+
+  <tspan class="dots">. </tspan>
+  <tspan class="key">Grid.Portfolio</tspan>
+  <tspan class="dots">: ................ </tspan>
+  <tspan class="value">your-portfolio.vercel.app</tspan>
+
+</text>
+
+
+<text x="470"
+      y="468">
+
+  <tspan class="dots">. </tspan>
+  <tspan class="key">Grid.LinkedIn</tspan>
+  <tspan class="dots">: .................. </tspan>
+  <tspan class="value">your-linkedin-username</tspan>
+
+</text>
+
+
+<text x="470"
+      y="493">
+
+  <tspan class="dots">. </tspan>
+  <tspan class="key">Grid.Github</tspan>
+  <tspan class="dots">: ................... </tspan>
+  <tspan class="value">github.com/harvsclein</tspan>
+
+</text>
+
 
     <!-- =======================================================
          LOWER OVERVIEW SECTION
