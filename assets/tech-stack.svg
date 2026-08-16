@@ -1,133 +1,81 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      width="1200"
-     height="610"
-     viewBox="0 0 1200 610">
+     height="500"
+     viewBox="0 0 1200 500">
 
   <defs>
 
     <!-- Background -->
-    <radialGradient id="bg"
+    <radialGradient id="bgGlow"
                     cx="50%"
                     cy="0%"
                     r="100%">
-
-      <stop offset="0%"
-            stop-color="#111827"/>
-
-      <stop offset="100%"
-            stop-color="#0B0F19"/>
-
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="60%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#050810"/>
     </radialGradient>
 
-
     <!-- Border -->
-    <linearGradient id="border"
+    <linearGradient id="borderGrad"
                     x1="0%"
                     y1="0%"
                     x2="100%"
                     y2="100%">
-
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="50%" stop-color="#7C3AED"/>
-      <stop offset="100%" stop-color="#00E5FF"/>
-
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#10B981"/>
     </linearGradient>
 
-
-    <!-- Card gradient -->
-    <linearGradient id="card"
+    <!-- Scanline -->
+    <linearGradient id="scanGrad"
                     x1="0%"
                     y1="0%"
                     x2="0%"
                     y2="100%">
-
-      <stop offset="0%"
-            stop-color="#1A1D21"/>
-
-      <stop offset="100%"
-            stop-color="#161B22"/>
-
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0"/>
+      <stop offset="44%" stop-color="#00E5FF" stop-opacity="0.02"/>
+      <stop offset="50%" stop-color="#B6F7FF" stop-opacity="0.55"/>
+      <stop offset="56%" stop-color="#00E5FF" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
     </linearGradient>
 
+    <!-- CRT lines -->
+    <pattern id="crt"
+             width="4"
+             height="4"
+             patternUnits="userSpaceOnUse">
+      <rect width="4"
+            height="1"
+            fill="#7DD3FC"
+            opacity="0.03"/>
+    </pattern>
 
-    <!-- Soft cyan glow -->
+    <!-- Glow -->
     <filter id="glow"
             x="-60%"
             y="-60%"
             width="220%"
             height="220%">
-
-      <feGaussianBlur
-        stdDeviation="4"
-        result="blur"/>
-
+      <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
-
     </filter>
 
-
-    <!-- Subtle moving highlight -->
-    <linearGradient id="shine"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%">
-
-      <stop offset="0%"
-            stop-color="#00E5FF"
-            stop-opacity="0"/>
-
-      <stop offset="50%"
-            stop-color="#00E5FF"
-            stop-opacity="0.10"/>
-
-      <stop offset="100%"
-            stop-color="#00E5FF"
-            stop-opacity="0"/>
-
-      <animateTransform
-        attributeName="gradientTransform"
-        type="translate"
-        from="-1 0"
-        to="1 0"
-        dur="5s"
-        repeatCount="indefinite"/>
-
-    </linearGradient>
-
-
-    <!-- CRT lines -->
-    <pattern id="lines"
-             width="4"
-             height="4"
-             patternUnits="userSpaceOnUse">
-
-      <rect width="4"
-            height="1"
-            fill="#7DD3FC"
-            opacity="0.025"/>
-
-    </pattern>
-
-
     <style>
-
-      .title {
+      .terminal-title {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 20px;
-        fill: #00F2FE;
-        font-weight: bold;
-        letter-spacing: 1px;
+        font-size: 13px;
+        fill: #64748B;
+        letter-spacing: 0.5px;
       }
 
-      .subtitle {
+      .status {
         font-family: "Courier New", Consolas, monospace;
         font-size: 11px;
-        fill: #8B949E;
-        letter-spacing: 0.8px;
+        fill: #00E5FF;
+        font-weight: bold;
       }
 
       .category {
@@ -135,16 +83,20 @@
         font-size: 10px;
         fill: #00E5FF;
         font-weight: bold;
-        letter-spacing: 1.8px;
+        letter-spacing: 1px;
       }
 
-      .name {
+      .tech {
         font-family: "Courier New", Consolas, monospace;
         font-size: 10px;
         fill: #E6EDF3;
-        font-weight: bold;
       }
 
+      .muted {
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 9px;
+        fill: #8B949E;
+      }
     </style>
 
   </defs>
@@ -157,35 +109,101 @@
   <rect x="0"
         y="0"
         width="1200"
-        height="610"
+        height="500"
         rx="18"
-        fill="url(#bg)"/>
+        fill="url(#bgGlow)"/>
 
   <rect x="0"
         y="0"
         width="1200"
-        height="610"
+        height="500"
         rx="18"
-        fill="url(#lines)"/>
+        fill="url(#crt)"/>
 
 
   <!-- =========================================================
-       OUTER PANEL
+       TERMINAL HEADER
   ========================================================== -->
 
   <rect x="3"
         y="3"
         width="1194"
-        height="604"
-        rx="18"
+        height="50"
+        rx="16"
+        fill="#0B1120"
+        fill-opacity="0.94"/>
+
+
+  <!-- macOS dots -->
+
+  <circle cx="28"
+          cy="28"
+          r="6"
+          fill="#EF4444"/>
+
+  <circle cx="51"
+          cy="28"
+          r="6"
+          fill="#F59E0B"/>
+
+  <circle cx="74"
+          cy="28"
+          r="6"
+          fill="#10B981"/>
+
+
+  <!-- Title -->
+
+  <text x="600"
+        y="34"
+        text-anchor="middle"
+        class="terminal-title">
+
+    harvsclein@devos ~ % STACK.CONFIG
+
+  </text>
+
+
+  <!-- Status -->
+
+  <circle cx="1060"
+          cy="28"
+          r="4"
+          fill="#00E5FF"
+          filter="url(#glow)">
+    <animate
+      attributeName="opacity"
+      values="1;0.25;1"
+      dur="1.5s"
+      repeatCount="indefinite"/>
+  </circle>
+
+  <text x="1073"
+        y="33"
+        class="status">
+
+    [DATA.LOG]
+
+  </text>
+
+
+  <!-- =========================================================
+       MAIN PANEL
+  ========================================================== -->
+
+  <rect x="3"
+        y="3"
+        width="1194"
+        height="494"
+        rx="16"
         fill="none"
-        stroke="url(#border)"
+        stroke="url(#borderGrad)"
         stroke-width="2"
-        opacity="0.82">
+        opacity="0.78">
 
     <animate
       attributeName="opacity"
-      values="0.50;0.90;0.50"
+      values="0.45;0.9;0.45"
       dur="3.5s"
       repeatCount="indefinite"/>
 
@@ -193,78 +211,66 @@
 
 
   <!-- =========================================================
-       TITLE
+       CATEGORY HEADERS
   ========================================================== -->
 
-  <text x="600"
-        y="42"
-        text-anchor="middle"
-        class="title"
-        filter="url(#glow)">
-
-    TECH STACK &amp; TOOLS
-
-  </text>
-
-
-  <text x="600"
-        y="62"
-        text-anchor="middle"
-        class="subtitle">
-
-    ./stack.sh --list  |  LANGUAGES • DATA • TOOLS
-
-  </text>
-
-
-  <line x1="120"
-        y1="79"
-        x2="1080"
-        y2="79"
-        stroke="#00E5FF"
-        stroke-opacity="0.18"/>
-
-
-  <!-- =========================================================
-       CATEGORY 1
-  ========================================================== -->
-
-  <text x="42"
-        y="103"
+  <text x="34"
+        y="83"
         class="category">
 
-    [01] PROGRAMMING.LANG
+    [01] LANGUAGES
+
+  </text>
+
+  <text x="34"
+        y="223"
+        class="category">
+
+    [02] DATA SCIENCE &amp; ANALYTICS
+
+  </text>
+
+  <text x="34"
+        y="363"
+        class="category">
+
+    [03] WEB &amp; DATABASES
+
+  </text>
+
+  <text x="34"
+        y="438"
+        class="category">
+
+    [04] DEV TOOLS &amp; VERSION CONTROL
 
   </text>
 
 
   <!-- =========================================================
-       ROW 1
+       ROW 1 — LANGUAGES
   ========================================================== -->
 
   <!-- C -->
 
   <g>
-    <rect x="30" y="120"
-          width="175" height="125"
+    <rect x="25" y="98"
+          width="220"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="30" y="120"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="43"
+           y="130"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"/>
 
-    <image x="90" y="137"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"/>
-
-    <text x="117.5" y="215"
-          text-anchor="middle"
-          class="name">
+    <text x="77"
+          y="148"
+          class="tech">
       C
     </text>
   </g>
@@ -273,26 +279,23 @@
   <!-- C++ -->
 
   <g>
-    <rect x="215" y="120"
-          width="175" height="125"
+    <rect x="255" y="98"
+          width="220"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="215" y="120"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="273"
+           y="130"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"/>
 
-    <image x="275" y="137"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"/>
-
-    <text x="302.5" y="215"
-          text-anchor="middle"
-          class="name">
+    <text x="307"
+          y="148"
+          class="tech">
       C++
     </text>
   </g>
@@ -301,26 +304,23 @@
   <!-- Java -->
 
   <g>
-    <rect x="400" y="120"
-          width="175" height="125"
+    <rect x="485" y="98"
+          width="220"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="400" y="120"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="503"
+           y="130"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"/>
 
-    <image x="460" y="137"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/>
-
-    <text x="487.5" y="215"
-          text-anchor="middle"
-          class="name">
+    <text x="537"
+          y="148"
+          class="tech">
       Java
     </text>
   </g>
@@ -329,183 +329,80 @@
   <!-- Python -->
 
   <g>
-    <rect x="585" y="120"
-          width="175" height="125"
+    <rect x="715" y="98"
+          width="220"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="585" y="120"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="733"
+           y="130"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
 
-    <image x="645" y="137"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/>
-
-    <text x="672.5" y="215"
-          text-anchor="middle"
-          class="name">
+    <text x="767"
+          y="148"
+          class="tech">
       Python
     </text>
   </g>
 
 
-  <!-- HTML -->
-
-  <g>
-    <rect x="770" y="120"
-          width="175" height="125"
-          rx="12"
-          fill="url(#card)"
-          stroke="#00E5FF"
-          stroke-opacity="0.16"/>
-
-    <rect x="770" y="120"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="830" y="137"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/>
-
-    <text x="857.5" y="215"
-          text-anchor="middle"
-          class="name">
-      HTML
-    </text>
-  </g>
-
-
-  <!-- CSS -->
-
-  <g>
-    <rect x="955" y="120"
-          width="215" height="125"
-          rx="12"
-          fill="url(#card)"
-          stroke="#00E5FF"
-          stroke-opacity="0.16"/>
-
-    <rect x="955" y="120"
-          width="215" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="1035" y="137"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"/>
-
-    <text x="1062.5" y="215"
-          text-anchor="middle"
-          class="name">
-      CSS
-    </text>
-  </g>
-
-
-  <!-- =========================================================
-       CATEGORY 2
-  ========================================================== -->
-
-  <text x="42"
-        y="277"
-        class="category">
-
-    [02] DATA.SCIENCE &amp; ANALYSIS
-
-  </text>
-
-
-  <!-- =========================================================
-       ROW 2
-  ========================================================== -->
-
   <!-- SQL -->
 
   <g>
-    <rect x="30" y="294"
-          width="175" height="125"
+    <rect x="945" y="98"
+          width="230"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="30" y="294"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="90" y="311"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/>
-
-    <text x="117.5" y="389"
-          text-anchor="middle"
-          class="name">
+    <text x="963"
+          y="149"
+          fill="#00E5FF"
+          font-family="Courier New, Consolas, monospace"
+          font-size="21"
+          font-weight="bold">
       SQL
     </text>
-  </g>
 
-
-  <!-- MySQL -->
-
-  <g>
-    <rect x="215" y="294"
-          width="175" height="125"
-          rx="12"
-          fill="url(#card)"
-          stroke="#00E5FF"
-          stroke-opacity="0.16"/>
-
-    <rect x="215" y="294"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="275" y="311"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/>
-
-    <text x="302.5" y="389"
-          text-anchor="middle"
-          class="name">
-      MySQL
+    <text x="1020"
+          y="148"
+          class="muted">
+      query language
     </text>
   </g>
 
+
+  <!-- =========================================================
+       ROW 2 — DATA
+  ========================================================== -->
 
   <!-- NumPy -->
 
   <g>
-    <rect x="400" y="294"
-          width="175" height="125"
+    <rect x="25" y="238"
+          width="178"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="400" y="294"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="43"
+           y="270"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg"/>
 
-    <image x="460" y="311"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"/>
-
-    <text x="487.5" y="389"
-          text-anchor="middle"
-          class="name">
+    <text x="77"
+          y="288"
+          class="tech">
       NumPy
     </text>
   </g>
@@ -514,26 +411,23 @@
   <!-- Pandas -->
 
   <g>
-    <rect x="585" y="294"
-          width="175" height="125"
+    <rect x="213" y="238"
+          width="178"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="585" y="294"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="231"
+           y="270"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"/>
 
-    <image x="645" y="311"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"/>
-
-    <text x="672.5" y="389"
-          text-anchor="middle"
-          class="name">
+    <text x="265"
+          y="288"
+          class="tech">
       Pandas
     </text>
   </g>
@@ -542,26 +436,23 @@
   <!-- Matplotlib -->
 
   <g>
-    <rect x="770" y="294"
-          width="175" height="125"
+    <rect x="401" y="238"
+          width="178"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="770" y="294"
-          width="175" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="419"
+           y="270"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg"/>
 
-    <image x="830" y="311"
-           width="55" height="55"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"/>
-
-    <text x="857.5" y="389"
-          text-anchor="middle"
-          class="name">
+    <text x="453"
+          y="288"
+          class="tech">
       Matplotlib
     </text>
   </g>
@@ -570,134 +461,27 @@
   <!-- Seaborn -->
 
   <g>
-    <rect x="955" y="294"
-          width="215" height="125"
+    <rect x="589" y="238"
+          width="178"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="955" y="294"
-          width="215" height="125"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <text x="1062.5"
-          y="353"
-          text-anchor="middle"
+    <text x="607"
+          y="293"
           fill="#00E5FF"
-          font-family="monospace"
-          font-size="35"
+          font-family="Courier New, Consolas, monospace"
+          font-size="23"
           font-weight="bold">
       S
     </text>
 
-    <text x="1062.5" y="389"
-          text-anchor="middle"
-          class="name">
+    <text x="643"
+          y="288"
+          class="tech">
       Seaborn
-    </text>
-  </g>
-
-
-  <!-- =========================================================
-       CATEGORY 3
-  ========================================================== -->
-
-  <text x="42"
-        y="451"
-        class="category">
-
-    [03] TOOLS &amp; INFRASTRUCTURE
-
-  </text>
-
-
-  <!-- =========================================================
-       ROW 3
-  ========================================================== -->
-
-  <!-- VS Code -->
-
-  <g>
-    <rect x="30" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#card)"
-          stroke="#00E5FF"
-          stroke-opacity="0.16"/>
-
-    <rect x="30" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="90" y="483"
-           width="52" height="52"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"/>
-
-    <text x="117.5" y="558"
-          text-anchor="middle"
-          class="name">
-      VS Code
-    </text>
-  </g>
-
-
-  <!-- Git -->
-
-  <g>
-    <rect x="215" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#card)"
-          stroke="#00E5FF"
-          stroke-opacity="0.16"/>
-
-    <rect x="215" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="275" y="483"
-           width="52" height="52"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
-
-    <text x="302.5" y="558"
-          text-anchor="middle"
-          class="name">
-      Git
-    </text>
-  </g>
-
-
-  <!-- GitHub -->
-
-  <g>
-    <rect x="400" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#card)"
-          stroke="#00E5FF"
-          stroke-opacity="0.16"/>
-
-    <rect x="400" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
-
-    <image x="460" y="483"
-           width="52" height="52"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"/>
-
-    <text x="487.5" y="558"
-          text-anchor="middle"
-          class="name">
-      GitHub
     </text>
   </g>
 
@@ -705,26 +489,23 @@
   <!-- Power BI -->
 
   <g>
-    <rect x="585" y="468"
-          width="175" height="115"
+    <rect x="777" y="238"
+          width="178"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="585" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <image x="795"
+           y="270"
+           width="24"
+           height="24"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powerbi/powerbi-original.svg"/>
 
-    <image x="645" y="483"
-           width="52" height="52"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg"/>
-
-    <text x="672.5" y="558"
-          text-anchor="middle"
-          class="name">
+    <text x="829"
+          y="288"
+          class="tech">
       Power BI
     </text>
   </g>
@@ -733,92 +514,280 @@
   <!-- Excel -->
 
   <g>
-    <rect x="770" y="468"
-          width="175" height="115"
+    <rect x="965" y="238"
+          width="210"
+          height="105"
           rx="12"
-          fill="url(#card)"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.16"/>
+          stroke-opacity="0.14"/>
 
-    <rect x="770" y="468"
-          width="175" height="115"
-          rx="12"
-          fill="url(#shine)"
-          opacity="0.5"/>
+    <text x="983"
+          y="293"
+          fill="#10B981"
+          font-family="Courier New, Consolas, monospace"
+          font-size="19"
+          font-weight="bold">
+      X
+    </text>
 
-    <image x="830" y="483"
-           width="52" height="52"
-           href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg"/>
-
-    <text x="857.5" y="558"
-          text-anchor="middle"
-          class="name">
+    <text x="1016"
+          y="288"
+          class="tech">
       Excel
     </text>
   </g>
 
 
-  <!-- Future tool -->
+  <!-- =========================================================
+       ROW 3 — WEB & DATABASES
+  ========================================================== -->
+
+  <!-- HTML -->
 
   <g>
-    <rect x="955" y="468"
-          width="215" height="115"
-          rx="12"
+    <rect x="25" y="378"
+          width="275"
+          height="48"
+          rx="10"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.14"/>
+
+    <image x="43"
+           y="390"
+           width="23"
+           height="23"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/>
+
+    <text x="77"
+          y="407"
+          class="tech">
+      HTML
+    </text>
+  </g>
+
+
+  <!-- CSS -->
+
+  <g>
+    <rect x="313" y="378"
+          width="275"
+          height="48"
+          rx="10"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.14"/>
+
+    <image x="331"
+           y="390"
+           width="23"
+           height="23"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
+
+    <text x="365"
+          y="407"
+          class="tech">
+      CSS
+    </text>
+  </g>
+
+
+  <!-- MySQL -->
+
+  <g>
+    <rect x="601"
+          y="378"
+          width="275"
+          height="48"
+          rx="10"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.14"/>
+
+    <image x="619"
+           y="390"
+           width="23"
+           height="23"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"/>
+
+    <text x="653"
+          y="407"
+          class="tech">
+      MySQL
+    </text>
+  </g>
+
+
+  <text x="889"
+        y="407"
+        class="muted">
+    databases / web
+  </text>
+
+
+  <!-- =========================================================
+       ROW 4 — DEV TOOLS
+  ========================================================== -->
+
+  <!-- VS Code -->
+
+  <g>
+    <rect x="25"
+          y="452"
+          width="205"
+          height="34"
+          rx="9"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.14"/>
+
+    <image x="38"
+           y="458"
+           width="20"
+           height="20"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"/>
+
+    <text x="68"
+          y="473"
+          class="tech">
+      VS Code
+    </text>
+  </g>
+
+
+  <!-- Git -->
+
+  <g>
+    <rect x="245"
+          y="452"
+          width="205"
+          height="34"
+          rx="9"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.14"/>
+
+    <image x="258"
+           y="458"
+           width="20"
+           height="20"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/>
+
+    <text x="288"
+          y="473"
+          class="tech">
+      Git
+    </text>
+  </g>
+
+
+  <!-- GitHub -->
+
+  <g>
+    <rect x="465"
+          y="452"
+          width="205"
+          height="34"
+          rx="9"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.14"/>
+
+    <image x="478"
+           y="458"
+           width="20"
+           height="20"
+           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"/>
+
+    <text x="508"
+          y="473"
+          class="tech">
+      GitHub
+    </text>
+  </g>
+
+
+  <!-- Future -->
+
+  <g>
+    <rect x="685"
+          y="452"
+          width="205"
+          height="34"
+          rx="9"
           fill="#12161D"
           stroke="#00E5FF"
-          stroke-opacity="0.14"
-          stroke-dasharray="5 5"/>
+          stroke-opacity="0.12"
+          stroke-dasharray="4 4"/>
 
-    <text x="1062.5"
-          y="516"
-          text-anchor="middle"
+    <text x="702"
+          y="473"
           fill="#475569"
           font-family="monospace"
-          font-size="28">
-
+          font-size="15">
       +
-
     </text>
 
-    <text x="1062.5"
-          y="558"
-          text-anchor="middle"
-          class="name"
-          fill="#64748B">
-
-      Future Tool
-
+    <text x="730"
+          y="473"
+          class="muted">
+      future tools
     </text>
-
   </g>
 
 
   <!-- =========================================================
-       SUBTLE PULSE
+       SUBTLE ANIMATED GRID GLOW
   ========================================================== -->
 
-  <rect x="12"
-        y="92"
-        width="1176"
-        height="505"
+  <rect x="15"
+        y="65"
+        width="1170"
+        height="430"
         rx="14"
         fill="none"
         stroke="#00E5FF"
-        stroke-opacity="0.05">
+        stroke-opacity="0.03">
 
     <animate
       attributeName="stroke-opacity"
-      values="0.02;0.08;0.02"
+      values="0.02;0.09;0.02"
       dur="4s"
       repeatCount="indefinite"/>
 
   </rect>
 
 
-  <!-- Bottom cursor -->
+  <!-- =========================================================
+       MOVING SCANLINE
+  ========================================================== -->
 
-  <text x="48"
-        y="597"
+  <rect x="0"
+        y="-90"
+        width="1200"
+        height="90"
+        fill="url(#scanGrad)"
+        opacity="0.68"
+        style="mix-blend-mode:screen">
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      from="0 -90"
+      to="0 590"
+      dur="6.5s"
+      repeatCount="indefinite"/>
+
+  </rect>
+
+
+  <!-- =========================================================
+       CURSOR
+  ========================================================== -->
+
+  <text x="1090"
+        y="475"
         fill="#00E5FF"
         font-family="monospace"
         font-size="10">
@@ -827,9 +796,8 @@
 
   </text>
 
-
-  <rect x="60"
-        y="587"
+  <rect x="1102"
+        y="465"
         width="7"
         height="12"
         fill="#00E5FF">
@@ -841,6 +809,5 @@
       repeatCount="indefinite"/>
 
   </rect>
-
 
 </svg>
