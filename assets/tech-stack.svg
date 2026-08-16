@@ -811,62 +811,70 @@
 
   <!-- MySQL -->
 
-  <g>
+<g>
 
-    <rect x="376"
-          y="268"
-          width="166"
-          height="64"
-          rx="9"
-          fill="#161B22"
-          stroke="#00E5FF"
-          stroke-opacity="0.15"/>
+  <rect x="376"
+        y="268"
+        width="166"
+        height="64"
+        rx="9"
+        fill="#161B22"
+        stroke="#00E5FF"
+        stroke-opacity="0.15"/>
 
-    <text x="396"
-          y="300"
-          class="glyph"
-          font-size="10"
-          fill="#00A6A6">
+  <text x="396"
+        y="300"
+        class="glyph"
+        font-size="10"
+        fill="#4479A1">
 
-      SQL
+    SQL
 
-    </text>
+  </text>
 
-    <text x="440"
-          y="300"
-          class="tech">
+  <text x="440"
+        y="300"
+        class="tech">
 
-      MySQL
+    MySQL
 
-    </text>
+  </text>
 
-  </g>
+</g>
 
 
-  <!-- Unused -->
+  <!-- Postgre Sql -->
 
-  <g>
+ <g>
 
-    <rect x="550"
-          y="268"
-          width="166"
-          height="64"
-          rx="9"
-          fill="#11161D"
-          stroke="#00E5FF"
-          stroke-opacity="0.10"
-          stroke-dasharray="4 4"/>
+  <rect x="550"
+        y="268"
+        width="166"
+        height="64"
+        rx="9"
+        fill="#161B22"
+        stroke="#00E5FF"
+        stroke-opacity="0.15"/>
 
-    <text x="633"
-          y="300"
-          text-anchor="middle"
-          class="muted">
+  <text x="570"
+        y="300"
+        class="glyph"
+        font-size="11"
+        fill="#336791">
 
-      —
+    PG
 
-    </text>
+  </text>
 
-  </g>
+  <text x="605"
+        y="300"
+        class="tech">
+
+    PostgreSQL
+
+  </text>
+
+</g>
 
 
   <g>
