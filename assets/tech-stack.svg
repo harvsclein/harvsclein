@@ -148,29 +148,29 @@
 
       .terminal-title {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 11px;
+        font-size: 12px;
         fill: #64748B;
-        letter-spacing: 0.4px;
+        letter-spacing: 0.5px;
       }
 
       .status {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 9px;
+        font-size: 10px;
         fill: #00E5FF;
         font-weight: bold;
       }
 
       .category {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 8px;
+        font-size: 11px;
         fill: #00E5FF;
         font-weight: bold;
-        letter-spacing: 1.2px;
+        letter-spacing: 1.1px;
       }
 
       .tech {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 8.5px;
+        font-size: 13px;
         fill: #E6EDF3;
         font-weight: bold;
       }
@@ -182,8 +182,9 @@
 
       .muted {
         font-family: "Courier New", Consolas, monospace;
-        font-size: 7px;
+        font-size: 10px;
         fill: #64748B;
+        font-weight: bold;
       }
 
     </style>
@@ -285,7 +286,7 @@
 
   <circle cx="1080"
           cy="24"
-          r="3"
+          r="3.2"
           fill="#00E5FF"
           filter="url(#glow)">
 
@@ -372,17 +373,17 @@
             stroke-opacity="0.15"/>
 
       <text x="48"
-            y="102"
+            y="106"
             class="glyph"
-            font-size="18"
+            font-size="24"
             fill="#00E5FF">
 
         C
 
       </text>
 
-      <text x="78"
-            y="103"
+      <text x="86"
+            y="107"
             class="tech">
 
         C
@@ -406,17 +407,17 @@
             stroke-opacity="0.15"/>
 
       <text x="222"
-            y="102"
+            y="106"
             class="glyph"
-            font-size="14"
+            font-size="19"
             fill="#00E5FF">
 
         C++
 
       </text>
 
-      <text x="262"
-            y="103"
+      <text x="273"
+            y="107"
             class="tech">
 
         C++
@@ -440,17 +441,17 @@
             stroke-opacity="0.15"/>
 
       <text x="396"
-            y="102"
+            y="106"
             class="glyph"
-            font-size="9"
+            font-size="12"
             fill="#F89820">
 
         JAVA
 
       </text>
 
-      <text x="438"
-            y="103"
+      <text x="445"
+            y="107"
             class="tech">
 
         Java
@@ -474,17 +475,17 @@
             stroke-opacity="0.15"/>
 
       <text x="570"
-            y="102"
+            y="106"
             class="glyph"
-            font-size="10"
+            font-size="18"
             fill="#FFD43B">
 
         PY
 
       </text>
 
-      <text x="605"
-            y="103"
+      <text x="612"
+            y="107"
             class="tech">
 
         Python
@@ -508,17 +509,17 @@
             stroke-opacity="0.15"/>
 
       <text x="744"
-            y="103"
+            y="106"
             class="glyph"
-            font-size="13"
+            font-size="17"
             fill="#00E5FF">
 
         SQL
 
       </text>
 
-      <text x="790"
-            y="103"
+      <text x="799"
+            y="107"
             class="tech">
 
         SQL
@@ -528,7 +529,7 @@
     </g>
 
 
-    <!-- Future language -->
+    <!-- Future -->
 
     <g>
 
@@ -543,7 +544,7 @@
             stroke-dasharray="4 4"/>
 
       <text x="981"
-            y="103"
+            y="107"
             text-anchor="middle"
             class="muted">
 
@@ -589,17 +590,17 @@
             stroke-opacity="0.15"/>
 
       <text x="48"
-            y="200"
+            y="205"
             class="glyph"
-            font-size="12"
+            font-size="17"
             fill="#4D77CF">
 
         NP
 
       </text>
 
-      <text x="82"
-            y="201"
+      <text x="94"
+            y="206"
             class="tech">
 
         NumPy
@@ -623,17 +624,17 @@
             stroke-opacity="0.15"/>
 
       <text x="222"
-            y="200"
+            y="205"
             class="glyph"
-            font-size="12"
+            font-size="17"
             fill="#FFFFFF">
 
         PD
 
       </text>
 
-      <text x="257"
-            y="201"
+      <text x="268"
+            y="206"
             class="tech">
 
         Pandas
@@ -657,17 +658,17 @@
             stroke-opacity="0.15"/>
 
       <text x="396"
-            y="200"
+            y="205"
             class="glyph"
-            font-size="11"
+            font-size="14"
             fill="#00E5FF">
 
         MPL
 
       </text>
 
-      <text x="436"
-            y="201"
+      <text x="448"
+            y="206"
             class="tech">
 
         Matplotlib
@@ -691,17 +692,17 @@
             stroke-opacity="0.15"/>
 
       <text x="570"
-            y="201"
+            y="206"
             class="glyph"
-            font-size="17"
+            font-size="23"
             fill="#00E5FF">
 
         S
 
       </text>
 
-      <text x="600"
-            y="201"
+      <text x="612"
+            y="206"
             class="tech">
 
         Seaborn
@@ -725,17 +726,17 @@
             stroke-opacity="0.15"/>
 
       <text x="744"
-            y="201"
+            y="206"
             class="glyph"
-            font-size="12"
+            font-size="17"
             fill="#F2C811">
 
         BI
 
       </text>
 
-      <text x="778"
-            y="201"
+      <text x="792"
+            y="206"
             class="tech">
 
         Power BI
@@ -759,17 +760,17 @@
             stroke-opacity="0.15"/>
 
       <text x="918"
-            y="201"
+            y="206"
             class="glyph"
-            font-size="14"
+            font-size="21"
             fill="#10B981">
 
         X
 
       </text>
 
-      <text x="949"
-            y="201"
+      <text x="958"
+            y="206"
             class="tech">
 
         Excel
@@ -814,17 +815,17 @@
             stroke-opacity="0.15"/>
 
       <text x="48"
-            y="299"
+            y="304"
             class="glyph"
-            font-size="12"
+            font-size="17"
             fill="#E34F26">
 
         &lt;/&gt;
 
       </text>
 
-      <text x="88"
-            y="300"
+      <text x="97"
+            y="305"
             class="tech">
 
         HTML
@@ -848,17 +849,17 @@
             stroke-opacity="0.15"/>
 
       <text x="222"
-            y="299"
+            y="305"
             class="glyph"
-            font-size="16"
+            font-size="22"
             fill="#1572B6">
 
         #
 
       </text>
 
-      <text x="252"
-            y="300"
+      <text x="263"
+            y="305"
             class="tech">
 
         CSS
@@ -882,17 +883,17 @@
             stroke-opacity="0.15"/>
 
       <text x="396"
-            y="300"
+            y="305"
             class="glyph"
-            font-size="10"
+            font-size="14"
             fill="#4479A1">
 
         SQL
 
       </text>
 
-      <text x="440"
-            y="300"
+      <text x="447"
+            y="305"
             class="tech">
 
         MySQL
@@ -916,17 +917,17 @@
             stroke-opacity="0.15"/>
 
       <text x="570"
-            y="300"
+            y="305"
             class="glyph"
-            font-size="11"
+            font-size="16"
             fill="#336791">
 
         PG
 
       </text>
 
-      <text x="605"
-            y="300"
+      <text x="615"
+            y="305"
             class="tech">
 
         PostgreSQL
@@ -936,7 +937,7 @@
     </g>
 
 
-    <!-- Jupyter Notebook -->
+    <!-- Jupyter -->
 
     <g>
 
@@ -950,17 +951,17 @@
             stroke-opacity="0.15"/>
 
       <text x="744"
-            y="300"
+            y="305"
             class="glyph"
-            font-size="10"
+            font-size="16"
             fill="#F37626">
 
         JN
 
       </text>
 
-      <text x="780"
-            y="300"
+      <text x="790"
+            y="305"
             class="tech">
 
         Jupyter
@@ -984,17 +985,17 @@
             stroke-opacity="0.15"/>
 
       <text x="918"
-            y="300"
+            y="305"
             class="glyph"
-            font-size="10"
+            font-size="16"
             fill="#5B8FF9">
 
         TB
 
       </text>
 
-      <text x="954"
-            y="300"
+      <text x="964"
+            y="305"
             class="tech">
 
         Tableau
@@ -1039,17 +1040,17 @@
             stroke-opacity="0.15"/>
 
       <text x="48"
-            y="398"
+            y="403"
             class="glyph"
-            font-size="10"
+            font-size="16"
             fill="#007ACC">
 
         &lt;/&gt;
 
       </text>
 
-      <text x="84"
-            y="399"
+      <text x="94"
+            y="404"
             class="tech">
 
         VS Code
@@ -1073,17 +1074,17 @@
             stroke-opacity="0.15"/>
 
       <text x="222"
-            y="399"
+            y="404"
             class="glyph"
-            font-size="9"
+            font-size="14"
             fill="#F05032">
 
         GIT
 
       </text>
 
-      <text x="256"
-            y="399"
+      <text x="263"
+            y="404"
             class="tech">
 
         Git
@@ -1107,17 +1108,17 @@
             stroke-opacity="0.15"/>
 
       <text x="396"
-            y="399"
+            y="404"
             class="glyph"
-            font-size="10"
+            font-size="15"
             fill="#E6EDF3">
 
         GH
 
       </text>
 
-      <text x="432"
-            y="399"
+      <text x="440"
+            y="404"
             class="tech">
 
         GitHub
@@ -1127,7 +1128,7 @@
     </g>
 
 
-    <!-- Future Tool -->
+    <!-- Future -->
 
     <g>
 
@@ -1142,7 +1143,7 @@
             stroke-dasharray="4 4"/>
 
       <text x="633"
-            y="399"
+            y="405"
             text-anchor="middle"
             class="muted">
 
@@ -1153,7 +1154,7 @@
     </g>
 
 
-    <!-- Future Tool -->
+    <!-- Future -->
 
     <g>
 
@@ -1168,7 +1169,7 @@
             stroke-dasharray="4 4"/>
 
       <text x="807"
-            y="399"
+            y="405"
             text-anchor="middle"
             class="muted">
 
@@ -1179,7 +1180,7 @@
     </g>
 
 
-    <!-- Future Tool -->
+    <!-- Future -->
 
     <g>
 
@@ -1194,7 +1195,7 @@
             stroke-dasharray="4 4"/>
 
       <text x="981"
-            y="399"
+            y="405"
             text-anchor="middle"
             class="muted">
 
@@ -1257,10 +1258,10 @@
   ========================================================== -->
 
   <text x="1124"
-        y="426"
+        y="383"
         fill="#00E5FF"
         font-family="monospace"
-        font-size="8">
+        font-size="9">
 
     $
 
@@ -1268,7 +1269,7 @@
 
 
   <rect x="1134"
-        y="418"
+        y="375"
         width="5"
         height="9"
         fill="#00E5FF">
