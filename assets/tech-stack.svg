@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      width="1200"
-     height="405"
-     viewBox="0 0 1200 405">
+     height="445"
+     viewBox="0 0 1200 445">
 
   <defs>
 
@@ -168,14 +168,14 @@
   <rect x="0"
         y="0"
         width="1200"
-        height="405"
+        height="445"
         rx="16"
         fill="url(#bgGlow)"/>
 
   <rect x="0"
         y="0"
         width="1200"
-        height="405"
+        height="445"
         rx="16"
         fill="url(#crt)"/>
 
@@ -256,7 +256,7 @@
   <rect x="3"
         y="3"
         width="1194"
-        height="399"
+        height="439"
         rx="14"
         fill="none"
         stroke="url(#borderGrad)"
@@ -270,15 +270,6 @@
       repeatCount="indefinite"/>
 
   </rect>
-
-
-  <!-- =========================================================
-       GRID GEOMETRY
-       6 equal columns
-       Tile width = 166
-       Tile height = 64
-       Gap = 8
-  ========================================================== -->
 
 
   <!-- =========================================================
@@ -471,7 +462,7 @@
   </g>
 
 
-  <!-- Empty / future -->
+  <!-- Future Language -->
 
   <g>
 
@@ -811,71 +802,73 @@
 
   <!-- MySQL -->
 
-<g>
+  <g>
 
-  <rect x="376"
-        y="268"
-        width="166"
-        height="64"
-        rx="9"
-        fill="#161B22"
-        stroke="#00E5FF"
-        stroke-opacity="0.15"/>
+    <rect x="376"
+          y="268"
+          width="166"
+          height="64"
+          rx="9"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.15"/>
 
-  <text x="396"
-        y="300"
-        class="glyph"
-        font-size="10"
-        fill="#4479A1">
+    <text x="396"
+          y="300"
+          class="glyph"
+          font-size="10"
+          fill="#4479A1">
 
-    SQL
+      SQL
 
-  </text>
+    </text>
 
-  <text x="440"
-        y="300"
-        class="tech">
+    <text x="440"
+          y="300"
+          class="tech">
 
-    MySQL
+      MySQL
 
-  </text>
+    </text>
 
-</g>
+  </g>
 
 
-  <!-- Postgre Sql -->
+  <!-- PostgreSQL -->
 
- <g>
+  <g>
 
-  <rect x="550"
-        y="268"
-        width="166"
-        height="64"
-        rx="9"
-        fill="#161B22"
-        stroke="#00E5FF"
-        stroke-opacity="0.15"/>
+    <rect x="550"
+          y="268"
+          width="166"
+          height="64"
+          rx="9"
+          fill="#161B22"
+          stroke="#00E5FF"
+          stroke-opacity="0.15"/>
 
-  <text x="570"
-        y="300"
-        class="glyph"
-        font-size="11"
-        fill="#336791">
+    <text x="570"
+          y="300"
+          class="glyph"
+          font-size="11"
+          fill="#336791">
 
-    PG
+      PG
 
-  </text>
+    </text>
 
-  <text x="605"
-        y="300"
-        class="tech">
+    <text x="605"
+          y="300"
+          class="tech">
 
-    PostgreSQL
+      PostgreSQL
 
-  </text>
+    </text>
 
-</g>
+  </g>
 
+
+  <!-- Future Database -->
 
   <g>
 
@@ -894,12 +887,14 @@
           text-anchor="middle"
           class="muted">
 
-      —
+      + FUTURE
 
     </text>
 
   </g>
 
+
+  <!-- Future Database -->
 
   <g>
 
@@ -918,7 +913,7 @@
           text-anchor="middle"
           class="muted">
 
-      —
+      + FUTURE
 
     </text>
 
@@ -926,18 +921,18 @@
 
 
   <!-- =========================================================
-       [04] DEV TOOLS & VERSION CONTROL
+       [04] DEV TOOLS & LEARNING
   ========================================================== -->
 
   <text x="28"
         y="356"
         class="category">
 
-    [04] DEV TOOLS &amp; VERSION CONTROL
+    [04] DEV TOOLS &amp; LEARNING
 
   </text>
 
-  <line x1="245"
+  <line x1="190"
         y1="353"
         x2="1172"
         y2="353"
@@ -952,24 +947,24 @@
     <rect x="28"
           y="366"
           width="166"
-          height="24"
-          rx="7"
+          height="64"
+          rx="9"
           fill="#161B22"
           stroke="#00E5FF"
           stroke-opacity="0.15"/>
 
-    <text x="44"
-          y="383"
+    <text x="48"
+          y="398"
           class="glyph"
-          font-size="8"
+          font-size="10"
           fill="#007ACC">
 
       &lt;/&gt;
 
     </text>
 
-    <text x="72"
-          y="383"
+    <text x="84"
+          y="399"
           class="tech">
 
       VS Code
@@ -986,24 +981,24 @@
     <rect x="202"
           y="366"
           width="166"
-          height="24"
-          rx="7"
+          height="64"
+          rx="9"
           fill="#161B22"
           stroke="#00E5FF"
           stroke-opacity="0.15"/>
 
-    <text x="218"
-          y="383"
+    <text x="222"
+          y="399"
           class="glyph"
-          font-size="8"
+          font-size="9"
           fill="#F05032">
 
       GIT
 
     </text>
 
-    <text x="250"
-          y="383"
+    <text x="256"
+          y="399"
           class="tech">
 
       Git
@@ -1020,24 +1015,24 @@
     <rect x="376"
           y="366"
           width="166"
-          height="24"
-          rx="7"
+          height="64"
+          rx="9"
           fill="#161B22"
           stroke="#00E5FF"
           stroke-opacity="0.15"/>
 
-    <text x="392"
-          y="383"
+    <text x="396"
+          y="399"
           class="glyph"
-          font-size="8"
+          font-size="10"
           fill="#E6EDF3">
 
       GH
 
     </text>
 
-    <text x="424"
-          y="383"
+    <text x="432"
+          y="399"
           class="tech">
 
       GitHub
@@ -1047,74 +1042,94 @@
   </g>
 
 
-  <!-- Future -->
+  <!-- Jupyter -->
 
   <g>
 
     <rect x="550"
           y="366"
           width="166"
-          height="24"
-          rx="7"
-          fill="#11161D"
+          height="64"
+          rx="9"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.10"
-          stroke-dasharray="4 4"/>
+          stroke-opacity="0.15"/>
 
-    <text x="633"
-          y="383"
-          text-anchor="middle"
-          class="muted">
+    <text x="570"
+          y="399"
+          class="glyph"
+          font-size="10"
+          fill="#F37626">
 
-      + future
+      JN
+
+    </text>
+
+    <text x="608"
+          y="399"
+          class="tech">
+
+      Jupyter
 
     </text>
 
   </g>
 
+
+  <!-- Tableau -->
 
   <g>
 
     <rect x="724"
           y="366"
           width="166"
-          height="24"
-          rx="7"
-          fill="#11161D"
+          height="64"
+          rx="9"
+          fill="#161B22"
           stroke="#00E5FF"
-          stroke-opacity="0.10"
-          stroke-dasharray="4 4"/>
+          stroke-opacity="0.15"/>
 
-    <text x="807"
-          y="383"
-          text-anchor="middle"
-          class="muted">
+    <text x="744"
+          y="399"
+          class="glyph"
+          font-size="10"
+          fill="#5B8FF9">
 
-      —
+      TB
+
+    </text>
+
+    <text x="780"
+          y="399"
+          class="tech">
+
+      Tableau
 
     </text>
 
   </g>
 
 
+  <!-- Future Tool -->
+
   <g>
 
     <rect x="898"
           y="366"
           width="166"
-          height="24"
-          rx="7"
+          height="64"
+          rx="9"
           fill="#11161D"
           stroke="#00E5FF"
           stroke-opacity="0.10"
           stroke-dasharray="4 4"/>
 
     <text x="981"
-          y="383"
+          y="399"
           text-anchor="middle"
           class="muted">
 
-      —
+      + FUTURE
 
     </text>
 
@@ -1122,13 +1137,13 @@
 
 
   <!-- =========================================================
-       GRID PULSE
+       SUBTLE GRID PULSE
   ========================================================== -->
 
   <rect x="14"
         y="52"
         width="1172"
-        height="345"
+        height="378"
         rx="13"
         fill="none"
         stroke="#00E5FF"
@@ -1159,7 +1174,7 @@
       attributeName="transform"
       type="translate"
       from="0 -80"
-      to="0 470"
+      to="0 500"
       dur="6.5s"
       repeatCount="indefinite"/>
 
@@ -1171,7 +1186,7 @@
   ========================================================== -->
 
   <text x="1124"
-        y="383"
+        y="426"
         fill="#00E5FF"
         font-family="monospace"
         font-size="8">
@@ -1182,7 +1197,7 @@
 
 
   <rect x="1134"
-        y="375"
+        y="418"
         width="5"
         height="9"
         fill="#00E5FF">
