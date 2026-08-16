@@ -596,7 +596,7 @@
 
       <tspan class="dots">. </tspan>
       <tspan class="key">Role</tspan>
-      <tspan class="dots">: .................... </tspan>
+      <tspan class="dots">: ........................... </tspan>
       <tspan class="value">BSIT Student</tspan>
 
     </text>
@@ -686,7 +686,7 @@
   <tspan class="dots">. </tspan>
   <tspan class="key">Grid.Portfolio</tspan>
   <tspan class="dots">: ................ </tspan>
-  <tspan class="value">xxxxx</tspan>
+  <tspan class="value">xxxxx.not_available</tspan>
 
 </text>
 
@@ -697,7 +697,7 @@
   <tspan class="dots">. </tspan>
   <tspan class="key">Grid.LinkedIn</tspan>
   <tspan class="dots">: .................. </tspan>
-  <tspan class="value">xxxxx</tspan>
+  <tspan class="value">xxxxx.not_available</tspan>
 
 </text>
 
